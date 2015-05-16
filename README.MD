@@ -7,3 +7,7 @@
 
 - venv
 	- 环境配置  
+
+- 数据库
+	- 测试环境 db.sqlite3
+	-  生产环境 mysql
