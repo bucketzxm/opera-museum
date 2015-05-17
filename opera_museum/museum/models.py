@@ -2,10 +2,10 @@
 from django.db import models
 
 # Create your models here.
-
+import hashlib
 
 class Image(models.Model):
-    image_url = models.FileField(verbose_name="图片地址")
+    image_url = models.FileField(upload_to="EntryImages/%Y/%m/%d", verbose_name="图片地址")
     description = models.TextField(blank=True, verbose_name="图片描述")
 
     def __str__(self):
