@@ -86,16 +86,21 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'museum/templates'),
         ],
-        
+
     },
 
 ]
 
 
+# set image and file upload root
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+#LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "zh_cn"
 
 TIME_ZONE = 'UTC'
 
