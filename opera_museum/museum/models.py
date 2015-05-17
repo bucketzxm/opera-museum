@@ -3,6 +3,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class Image(models.Model):
     image_url = models.FileField(verbose_name="图片地址")
     description = models.TextField(blank=True, verbose_name="图片描述")
@@ -17,6 +18,7 @@ class Image(models.Model):
         verbose_name = "图片"
         verbose_name_plural = "图片"
 
+
 class Tag(models.Model):
     key = models.CharField(max_length=256, verbose_name="属性名字")
     value = models.CharField(max_length=256, verbose_name="属性内容")
@@ -30,6 +32,7 @@ class Tag(models.Model):
     class Meta:
         verbose_name = "属性"
         verbose_name_plural = "属性"
+
 
 class Entry(models.Model):
     id = models.AutoField(primary_key=True, verbose_name="词条Id")

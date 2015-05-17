@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -64,6 +65,19 @@ DATABASES = {
     }
 }
 
+# Template settings
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.jinja2.Jinja2',
+        'APP_DIRS': True,
+        'DIRS': [
+            os.path.join(BASE_DIR,'museum/templates'),
+        ],
+        'OPTIONS': {
+
+        },
+    },
+]
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
