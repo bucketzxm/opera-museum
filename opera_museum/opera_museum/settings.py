@@ -58,6 +58,7 @@ WSGI_APPLICATION = 'opera_museum.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -65,19 +66,16 @@ DATABASES = {
     }
 }
 
-# Template settings
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.jinja2.Jinja2',
-        'APP_DIRS': True,
         'DIRS': [
-            os.path.join(BASE_DIR,'museum/templates'),
+            os.path.join(BASE_DIR, 'museum/templates'),
+            os.path.join(BASE_DIR, '/admin'),
         ],
-        'OPTIONS': {
-
-        },
     },
 ]
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -96,3 +94,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
