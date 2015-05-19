@@ -15,6 +15,16 @@
     {{ footer.footer_script() }}
 {% endblock %}
 
+{% block beforeContent %}
+    {{ super() }}
+    {{ navbar.navbar_div() }}
+{% endblock %}
+
 {% block content %}
     {{ super() }}
+{% endblock %}
+
+{% block afterContent %}
+    {{ super() }}
+    {{ footer.footer_div() }}
 {% endblock %}

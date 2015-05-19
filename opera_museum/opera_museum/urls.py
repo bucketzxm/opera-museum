@@ -1,7 +1,10 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+
 import museum.urls
+
 admin.autodiscover()
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'opera_museum.views.home', name='home'),

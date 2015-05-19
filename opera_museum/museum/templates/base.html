@@ -10,9 +10,15 @@
 </head>
 
 <body>
+    {% block beforeContent %}
+    {% endblock %}
+    
     {% block content %}
     {% endblock %}
 
+    {% block afterContent %}
+    {% endblock %}
+    
     {% block script %}
     {% endblock %}
 </body>
