@@ -48,6 +48,15 @@ class Entry(models.Model):
     watched = models.IntegerField(default=0, verbose_name="观看数量")
 
 
+    @classmethod
+    def find_related_entries(cls,name,content,):
+        entry_list = Entry.objects.all()
+        for entry in entry_list:
+            if name in entry.content:
+                cls.relate_entry.add(entry)
+                entry.relate_entry.add(cls)
+        
+
     def __str__(self):
         return u'词条 %s : %s ' % ( str(self.id), self.name )
 
