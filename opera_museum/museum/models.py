@@ -44,6 +44,8 @@ class Entry(models.Model):
     Tag = models.ManyToManyField(Tag, blank=True, verbose_name="属性分类")
     relate_entry = models.ManyToManyField('self', blank=True, verbose_name="相关词条")
 
+    support = models.IntegerField(default=0, verbose_name="点赞数量")
+    watched = models.IntegerField(default=0, verbose_name="观看数量")
 
 
     def __str__(self):
