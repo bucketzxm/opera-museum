@@ -1,0 +1,20 @@
+{% macro waterfall_head() %}
+    <link rel="stylesheet" href="museum/waterfall/css/reset.css">
+    <link rel="stylesheet" href="museum/waterfall/css/waterfall.css">
+{% endmacro %}
+
+
+{% macro waterfall_div(images, idname="waterfall-container"), classname="waterfall-item"%}
+    <div id="{{idname}}">
+        {% for image in images %}
+            <div class="{{classname}}">
+                <img src="{{image.src}}" width="{{image.width}}" height="{{image.height}}" />
+            </div>
+        {% endfor %}
+    </div>
+{% endmacro %}
+
+{% macro waterfall_script() %}
+    <script src="museum/waterfall/js/libs/handlebars/handlebars.js"></script>
+    <script src="museum/waterfall/js/waterfall.min.js"></script>
+{% endmacro %}

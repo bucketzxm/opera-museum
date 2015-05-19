@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% import "import_navbar.html" as navbar %}
+{% import "import_footer.html" as footer %}
+
+{% block head %}
+    {{ super() }}
+    {{ navbar.navbar_head() }}
+    {{ footer.footer_head() }}
+{% endblock %}
+
+{% block script %}
+    {{ super() }}
+    {{ navbar.navbar_script() }}
+    {{ footer.footer_script() }}
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    {{ navbar.navbar_div() }}
+{% endblock %}
+
+{% block content %}
+    {{ super() }}
+{% endblock %}
+
+{% block afterContent %}
+    {{ super() }}
+    {{ footer.footer_div() }}
+{% endblock %}

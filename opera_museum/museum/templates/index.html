@@ -1,11 +1,61 @@
-{% extends 'base.html' %}
+{% extends "baseNavbarFooter.html" %}
 
-{% block navbar %}
-
-
-
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="/static/museum/css/index.css">
+	<link rel="stylesheet" href="/static/museum/font-awesome/css/font-awesome.min.css">
 {% endblock %}
 
-{% block body %}
+{% block script %}
+    {{ super() }}
 {% endblock %}
 
+{% block content %}
+    {{ super() }}
+
+    <div class="slide">
+		<img class="slide-control-left" src="/static/museum/img/left.png" alt="left" />
+		<img class="slide-control-right" src="/static/museum/img/right.png" alt="right" />
+		<div class="holder">
+			<img src="/static/museum/img/sample.png" alt="sample" />
+			<p>杂志文字说明</p>
+		</div>
+		<div class="holder">
+			<img src="/static/museum/img/sample.png" alt="sample" />
+			<p>杂志文字说明</p>
+		</div>
+		<div class="holder">
+			<img src="/static/museum/img/sample.png" alt="sample" />
+			<p>杂志文字说明</p>
+		</div>
+		<div class="holder">
+			<img src="/static/museum/img/sample.png" alt="sample" />
+			<p>杂志文字说明</p>
+		</div>
+		<div class="holder">
+			<img src="/static/museum/img/sample.png" alt="sample" />
+			<p>杂志文字说明</p>
+		</div>
+		<div class="holder">
+			<img src="/static/museum/img/sample.png" alt="sample" />
+			<p>杂志文字说明</p>
+		</div>
+		<div class="holder">
+			<img src="/static/museum/img/sample.png" alt="sample" />
+			<p>杂志文字说明</p>
+		</div>
+		<div class="holder">
+			<img src="/static/museum/img/sample.png" alt="sample" />
+			<p>杂志文字说明</p>
+		</div>
+		<div class="holder">
+			<img src="/static/museum/img/sample.png" alt="sample" />
+			<p>杂志文字说明</p>
+		</div>
+	</div>
+
+	<div class="shadow">
+		<img src="/static/museum/img/shadow.png" alt="shadow" />
+	</div>
+
+{% endblock %}

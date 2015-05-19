@@ -9,10 +9,10 @@ class Image(models.Model):
     description = models.TextField(blank=True, verbose_name="图片描述")
 
     def __str__(self):
-        return u'图片 %s' % self.description
+        return u'图片 %s' % self.value
 
     def __unicode__(self):
-        return u'图片 %s' % self.description
+        return u'图片 %s' % self.value
 
     class Meta:
         verbose_name = "图片"
@@ -43,6 +43,7 @@ class Entry(models.Model):
     # relate_entry = models.TextField(blank=True, verbose_name="相关词条")
     Tag = models.ManyToManyField(Tag, blank=True, verbose_name="属性分类")
     relate_entry = models.ManyToManyField('self', blank=True, verbose_name="相关词条")
+
 
 
     def __str__(self):
