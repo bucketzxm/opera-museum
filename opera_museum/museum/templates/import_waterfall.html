@@ -1,20 +1,28 @@
 {% macro waterfall_head() %}
-    <link rel="stylesheet" href="museum/waterfall/css/reset.css">
-    <link rel="stylesheet" href="museum/waterfall/css/waterfall.css">
+    <link rel="stylesheet" href="/static/museum/waterfall/css/reset.css">
+    <link rel="stylesheet" href="/static/museum/waterfall/css/waterfall.css">
 {% endmacro %}
 
 
-{% macro waterfall_div(images, idname="waterfall-container"), classname="waterfall-item"%}
-    <div id="{{idname}}">
-        {% for image in images %}
-            <div class="{{classname}}">
-                <img src="{{image.src}}" width="{{image.width}}" height="{{image.height}}" />
+{% macro waterfall_div(container_id="waterfall-container", render_id="waterfall-tpl", item_class="waterfall-item") %}
+    <div id="{{container_id}}"></div>
+    <script type="text/x-handlebars-template" id="{{render_id}}">
+        {% raw %}
+        {{#result}}
+        {% endraw %}
+            <div class="{{item_class}}">
+                {% raw %}
+                <img src="{{image}}" width="{{width}}" height="{{height}}" />
+                {% endraw %}
             </div>
-        {% endfor %}
-    </div>
+        {% raw %}
+        {{/result}}
+        {% endraw %}
+    </script>
 {% endmacro %}
 
 {% macro waterfall_script() %}
-    <script src="museum/waterfall/js/libs/handlebars/handlebars.js"></script>
-    <script src="museum/waterfall/js/waterfall.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="/static/museum/waterfall/js/libs/handlebars/handlebars.js"></script>
+    <script src="/static/museum/waterfall/js/waterfall.min.js"></script>
 {% endmacro %}
