@@ -1,12 +1,32 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render, render_to_response, HttpResponse, redirect, RequestContext
+from models import Entry
 from django.template import loader
 
-def index(request):        
-    # template = loader.get_template("index.html")
-    # context = {"title": "Home"}
-    # return render(request, template)
+
+
+def index(request):
+    entries = Entry.objects.all()
+
     return render_to_response("index.html")
+
+
+
+# look up detail for appointed entry
+def entry_detail(request):
+
+    if request.method == 'GET':
+        query_name = request.GET['name']
+        entries = Entry.objects.all().fileter(name=query_name)
+
+        if not entries:
+            return render_to_response("404.html")
+        else:
+            pass
+
+
+    return render_to_response("")
+
 
 def indexData(request, page):
     jsondata = """
