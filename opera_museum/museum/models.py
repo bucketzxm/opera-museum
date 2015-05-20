@@ -16,26 +16,25 @@ class Image(models.Model):
         return u'图片 %s' % self.value
 
     class Meta:
-        verbose_name = "图片"
-        verbose_name_plural = "图片"
+        verbose_name = u"图片"
+        verbose_name_plural = u"图片"
 
 
 class Tag(models.Model):
     id = models.AutoField(primary_key=True)
     key = models.CharField(max_length=256, verbose_name="属性名字")
     value = models.CharField(max_length=256, verbose_name="属性内容")
-
-    father = models.ForeignKey('self',blank=True, null= True, default="", verbose_name="父亲标签")
+    father = models.ForeignKey('self',blank=True, null= True, related_name="fTag", default="", verbose_name="父亲标签")
 
     def __str__(self):
-        return u'属性 %s : 值%s' % (self.key, self.value)
+        return u'属性 %s : 值 %s' % (self.key, self.value)
 
     def __unicode__(self):
-        return u'属性 %s : 值%s' % (self.key, self.value)
+        return u'属性 %s : 值 %s' % (self.key, self.value)
 
     class Meta:
-        verbose_name = "属性"
-        verbose_name_plural = "属性"
+        verbose_name = u"属性"
+        verbose_name_plural = u"属性"
 
 
 class Entry(models.Model):
@@ -45,7 +44,7 @@ class Entry(models.Model):
     images = models.ManyToManyField(Image, blank=True, verbose_name="图片")
     video_url = models.TextField(blank=True, verbose_name="视屏链接")
     # relate_entry = models.TextField(blank=True, verbose_name="相关词条")
-    Tag = models.ManyToManyField(Tag, blank=True, verbose_name="属性分类")
+    tags = models.ManyToManyField(Tag, blank=True, verbose_name=u"属性分类")
     relate_entry = models.ManyToManyField('self', blank=True, verbose_name="相关词条")
 
     support = models.IntegerField(default=0, verbose_name="点赞数量")
@@ -69,6 +68,6 @@ class Entry(models.Model):
 
 
     class Meta:
-        verbose_name = "词条"
-        verbose_name_plural = "词条"
+        verbose_name = u"词条"
+        verbose_name_plural = u"词条"
 

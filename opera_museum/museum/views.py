@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 from django.shortcuts import render, render_to_response, HttpResponse, redirect, RequestContext
-from models import Entry
-from django.template import loader
+from models import Entry, Tag
 
+from django.template import loader
 
 
 def index(request):
@@ -11,10 +12,8 @@ def index(request):
     return render_to_response("index.html")
 
 
-
 # look up detail for appointed entry
 def entry_detail(request):
-
     if request.method == 'GET':
         query_name = request.GET['name']
         entries = Entry.objects.all().fileter(name=query_name)
@@ -24,8 +23,22 @@ def entry_detail(request):
         else:
             pass
 
-
     return render_to_response("")
+
+
+# look up entries in the same category
+def entry_category(request):
+    if request.method == 'GET':
+        tag_key = request.GET['tag_key']
+        tag_value = request.GET['tag_value']
+
+        tag = Tag.objects.all().filter(key=tag_key, value=tag_value)
+        #reverse query
+        entries = tag.entry_set.all()
+        print(entries)
+
+    elif request.method == "POST":
+        pass
 
 
 def indexData(request, page):
