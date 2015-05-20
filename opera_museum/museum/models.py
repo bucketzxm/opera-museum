@@ -4,6 +4,7 @@ from django.db import models
 # Create your models here.
 import hashlib
 
+
 class Image(models.Model):
     image_url = models.FileField(upload_to="EntryImages/%Y/%m/%d", verbose_name="图片地址")
     description = models.TextField(blank=True, verbose_name="图片描述")
@@ -20,8 +21,11 @@ class Image(models.Model):
 
 
 class Tag(models.Model):
+    id = models.AutoField(primary_key=True)
     key = models.CharField(max_length=256, verbose_name="属性名字")
     value = models.CharField(max_length=256, verbose_name="属性内容")
+
+    father = models.ForeignKey('self',blank=True, null= True, default="", verbose_name="父亲标签")
 
     def __str__(self):
         return u'属性 %s : 值%s' % (self.key, self.value)
@@ -49,13 +53,13 @@ class Entry(models.Model):
 
 
     @classmethod
-    def find_related_entries(cls,name,content,):
+    def find_related_entries(cls, name, content, ):
         entry_list = Entry.objects.all()
         for entry in entry_list:
             if name in entry.content:
                 cls.relate_entry.add(entry)
                 entry.relate_entry.add(cls)
-        
+
 
     def __str__(self):
         return u'词条 %s : %s ' % ( str(self.id), self.name )
