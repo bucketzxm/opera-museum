@@ -24,10 +24,10 @@ class Tag(models.Model):
     value = models.CharField(max_length=256, verbose_name="属性内容")
 
     def __str__(self):
-        return u'图片 %s' % self.value
+        return u'属性 %s : 值%s' % (self.key, self.value)
 
     def __unicode__(self):
-        return u'图片 %s' % self.value
+        return u'属性 %s : 值%s' % (self.key, self.value)
 
     class Meta:
         verbose_name = "属性"
