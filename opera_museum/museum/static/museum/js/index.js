@@ -5,6 +5,7 @@ $('#waterfall-container').waterfall({
     gutterHeight: 15,
     checkImagesLoaded: false,
     path: function(page) {
-        return 'data/data1.json?page=' + page;
+        return 'rest/v1/index/indexImages/' + page;
+        //return 'http://wlog.cn/demo/waterfall/data/data1.json?page=1';
     }
 });
