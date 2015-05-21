@@ -1,0 +1,12 @@
+.sliderBackground {
+	border: 1px solid #e3e3e3;
+	width: 100%;
+	background: url("../img/bk_rough.png");
+	overflow: hidden;
+    position: relative;
+}
+
+.slider .sliderHolder {
+    margin: 0px auto;
+	float: left;
+}
