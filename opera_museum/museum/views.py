@@ -5,13 +5,9 @@ from models import Entry, Tag
 
 from django.template import loader
 import json
-from PIL import Image
-
 
 '''
     index ---> 首页
-
-    get_image_size( Image img) ----> 获取图片大小(x,y)
 
     entry_detail ----> 获得详细页面 detail.html
 
@@ -24,17 +20,6 @@ from PIL import Image
 
 def index(request):
     return render_to_response("index.html")
-
-
-def get_image_size(image):
-    '''
-    get image size
-    :return: tuple of ( height,weight)
-    '''
-    # get Image path
-    path = image.image_url.path
-    im = Image.open(path)
-    return im.size
 
 
 # look up detail for appointed entry
@@ -103,8 +88,8 @@ def get_entry_json(tag):
         {
             # TODO dirty code here
             "image": entry.images.all().first().image_url.url,  # pay attention to last .url
-            "width": get_image_size( entry.images.all().first())[0],
-            "height": get_image_size( entry.images.all().first())[1],
+            "width": entry.images.all().first().getImageSize()[0],
+            "height": entry.images.all().first().getImageSize()[1],
         }
 
         for entry in entries if entry.images.all().first()

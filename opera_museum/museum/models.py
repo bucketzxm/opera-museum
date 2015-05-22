@@ -79,12 +79,19 @@ class Image(models.Model):
     image_url = models.ImageField(upload_to="EntryImages/%Y/%m/%d", verbose_name="图片地址")
     description = models.TextField(blank=True, verbose_name="图片描述")
     entry = models.ForeignKey(Entry, blank=True, null = True, verbose_name="对应词条")
+    image_size = (-1, -1)
 
     def __str__(self):
         return u'图片 %s' % self.description[0:10]
 
     def __unicode__(self):
         return u'图片 %s' % self.description[0:10]
+
+    def getImageSize(self):
+        if self.image_size[0] != -1 and self.image_size[1] != -1:
+            return self.image_size
+        self.image_size = Image.open(image_url.path).size
+        return self.image_size
 
     class Meta:
         verbose_name = u"图片"
