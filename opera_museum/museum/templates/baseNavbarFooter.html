@@ -6,13 +6,13 @@
 {% block head %}
     {{ super() }}
     {{ navbar.navbar_head() }}
-    {{ footer.footer_head() }}
+    <!-- {{ footer.footer_head() }} -->
 {% endblock %}
 
 {% block script %}
     {{ super() }}
     {{ navbar.navbar_script() }}
-    {{ footer.footer_script() }}
+    <!-- {{ footer.footer_script() }} -->
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,5 +26,5 @@
 
 {% block afterContent %}
     {{ super() }}
-    {{ footer.footer_div() }}
+    <!-- {{ footer.footer_div() }} -->
 {% endblock %}

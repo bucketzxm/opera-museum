@@ -5,12 +5,9 @@ from models import Entry, Tag
 
 from django.template import loader
 
-
 def index(request):
     entries = Entry.objects.all()
-
     return render_to_response("index.html")
-
 
 # look up detail for appointed entry
 def entry_detail(request):
@@ -25,7 +22,6 @@ def entry_detail(request):
 
     return render_to_response("")
 
-
 # look up entries in the same category
 def entry_category(request):
     if request.method == 'GET':
@@ -36,10 +32,8 @@ def entry_category(request):
         #reverse query
         entries = tag.entry_set.all()
         print(entries)
-
     elif request.method == "POST":
         pass
-
 
 def indexData(request, page):
     jsondata = """
