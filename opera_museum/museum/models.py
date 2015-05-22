@@ -10,18 +10,6 @@ class Image(models.Model):
     description = models.TextField(blank=True, verbose_name="图片描述")
 
 
-
-    @classmethod
-    def get_image_size(cls):
-        '''
-        get image size
-        :return: tuple of ( height,weight)
-        '''
-        # get Image path
-        path = cls.image_url.path
-        im = Image.open(path)
-        return im.size
-
     def __str__(self):
         return u'图片 %s' % self.description[0:10]
 
