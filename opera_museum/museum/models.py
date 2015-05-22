@@ -3,17 +3,30 @@ from django.db import models
 
 # Create your models here.
 import hashlib
-
+from PIL import Image
 
 class Image(models.Model):
-    image_url = models.FileField(upload_to="EntryImages/%Y/%m/%d", verbose_name="图片地址")
+    image_url = models.ImageField(upload_to="EntryImages/%Y/%m/%d", verbose_name="图片地址")
     description = models.TextField(blank=True, verbose_name="图片描述")
 
+
+
+    @classmethod
+    def get_image_size(cls):
+        '''
+        get image size
+        :return: tuple of ( height,weight)
+        '''
+        # get Image path
+        path = cls.image_url.path
+        im = Image.open(path)
+        return im.size
+
     def __str__(self):
-        return u'图片 %s' % self.value
+        return u'图片 %s' % self.description[0:10]
 
     def __unicode__(self):
-        return u'图片 %s' % self.value
+        return u'图片 %s' % self.description[0:10]
 
     class Meta:
         verbose_name = u"图片"
@@ -25,6 +38,23 @@ class Tag(models.Model):
     key = models.CharField(max_length=256, verbose_name="属性名字")
     value = models.CharField(max_length=256, verbose_name="属性内容")
     father = models.ForeignKey('self',blank=True, null= True, related_name="fTag", default="", verbose_name="父亲标签")
+
+    @classmethod
+    def get_root(cls):
+        father = cls.father
+        while father != cls:
+            father = cls.father
+        return father
+
+    @classmethod
+    def get_father_list(cls):
+        father_list = []
+        father = cls.father
+        while father != cls:
+            father_list.append(father)
+            father = cls.father
+        return father_list
+
 
     def __str__(self):
         return u'属性 %s : 值 %s' % (self.key, self.value)
