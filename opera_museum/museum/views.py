@@ -4,10 +4,11 @@ from django.shortcuts import render, render_to_response, HttpResponse, redirect,
 from models import Entry, Tag
 
 from django.template import loader
+import json
 
 def index(request):
-    entries = Entry.objects.all()
     return render_to_response("index.html")
+
 
 # look up detail for appointed entry
 def entry_detail(request):
@@ -34,6 +35,39 @@ def entry_category(request):
         print(entries)
     elif request.method == "POST":
         pass
+
+
+
+def get_entry_json(tag):
+    '''
+    get entry_json data filter by tag for waterfall
+    :param tag:
+    :return:
+    '''
+
+    entries = Entry.objects.all().filter( tags = tag)
+    print(entries)
+
+    # return json format data to waterfall
+    total = len(entries)
+
+    entry_list = [
+        {
+            "image": entry.images.all().first().image_url.url, # pay attention to last .url
+            "width": entry.images.all(),
+            "height": 100
+        }
+
+        for entry in entries  if entry.images.all().first()
+    ]
+    json_data = json.dumps(
+        {
+            "total" : total,
+            "result": json.dumps(entry_list),
+        }
+    )
+    return json_data
+
 
 def indexData(request, page):
     jsondata = """
