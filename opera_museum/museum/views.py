@@ -8,6 +8,20 @@ import json
 from PIL import Image
 
 
+'''
+    index ---> 首页
+
+    get_image_size( Image img) ----> 获取图片大小(x,y)
+
+    entry_detail ----> 获得详细页面 detail.html
+
+    entry_category ----> 获取某个目录下的词条
+
+    get_entry_json ----> 获取词条json 信息返回
+
+'''
+
+
 def index(request):
     return render_to_response("index.html")
 
@@ -32,9 +46,30 @@ def entry_detail(request):
         if not entries:
             return render_to_response("404.html")
         else:
-            pass
+            # add entry watched
+            if len(entries) > 1:
+                #TODO If more than 1 entries , try to redirect to another page
+                return HttpResponse("")
+            else:
+                entry = entries.first()
+                if entry.watched <= 1000:
+                    entry.watched += 1
+                return render_to_response("entry_detail.html")
 
     return render_to_response("")
+
+
+# support the entry
+def support_entry(request):
+    if request.method == 'POST':
+        entry_id = request.POST['entryId']
+        entry = Entry.objects.all().filter(id=entry_id)[0]
+
+
+        if entry.support<1000:
+            entry.support += 1
+
+    return HttpResponse("")
 
 
 # look up entries in the same category

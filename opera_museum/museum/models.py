@@ -5,21 +5,6 @@ from django.db import models
 import hashlib
 from PIL import Image
 
-class Image(models.Model):
-    image_url = models.ImageField(upload_to="EntryImages/%Y/%m/%d", verbose_name="图片地址")
-    description = models.TextField(blank=True, verbose_name="图片描述")
-
-
-    def __str__(self):
-        return u'图片 %s' % self.description[0:10]
-
-    def __unicode__(self):
-        return u'图片 %s' % self.description[0:10]
-
-    class Meta:
-        verbose_name = u"图片"
-        verbose_name_plural = u"图片"
-
 
 class Tag(models.Model):
     id = models.AutoField(primary_key=True)
@@ -59,7 +44,7 @@ class Entry(models.Model):
     id = models.AutoField(primary_key=True, verbose_name="词条Id")
     name = models.CharField(max_length=128, verbose_name="词条名称")
     content = models.TextField(blank=True, verbose_name="词条内容")
-    images = models.ManyToManyField(Image, blank=True, verbose_name="图片")
+    #images = models.ManyToManyField(Image, blank=True, verbose_name="图片")
     video_url = models.TextField(blank=True, verbose_name="视屏链接")
     # relate_entry = models.TextField(blank=True, verbose_name="相关词条")
     tags = models.ManyToManyField(Tag, blank=True, verbose_name=u"属性分类")
@@ -89,3 +74,18 @@ class Entry(models.Model):
         verbose_name = u"词条"
         verbose_name_plural = u"词条"
 
+
+class Image(models.Model):
+    image_url = models.ImageField(upload_to="EntryImages/%Y/%m/%d", verbose_name="图片地址")
+    description = models.TextField(blank=True, verbose_name="图片描述")
+    entry = models.ForeignKey(Entry, blank=True, null = True, verbose_name="对应词条")
+
+    def __str__(self):
+        return u'图片 %s' % self.description[0:10]
+
+    def __unicode__(self):
+        return u'图片 %s' % self.description[0:10]
+
+    class Meta:
+        verbose_name = u"图片"
+        verbose_name_plural = u"图片"
