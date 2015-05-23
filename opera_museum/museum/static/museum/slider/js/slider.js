@@ -1,4 +1,3 @@
-;
 var Slider = (function($) {
     'use strict';
     // statics

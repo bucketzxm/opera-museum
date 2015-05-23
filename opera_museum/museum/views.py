@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from django.shortcuts import render, render_to_response, HttpResponse, redirect, RequestContext
+from django.views.decorators.csrf import csrf_protect,csrf_exempt
+
 from models import Entry, Tag
+
 
 from django.template import loader
 import json
@@ -101,6 +104,26 @@ def get_entry_json(tag):
         }
     )
     return json_data
+
+
+@csrf_exempt
+def get_slider_json(request):
+    res_data = '''{
+        $container: $('#slider'),
+        items: [
+            '<div><img src="/static/museum/img/test.png"/></div>',
+            '<div><img src="/static/museum/img/test.png"/></div>',
+        ],
+        winHeight: 368,
+        winWidth: 643,
+        picPadding: 35
+    }
+    '''
+
+    if request.method == "POST":
+        return HttpResponse(res_data)
+
+    return HttpResponse("")
 
 
 def indexData(request, page):
