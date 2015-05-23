@@ -93,7 +93,6 @@ TEMPLATES = [
 
 # set image and file upload root
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -118,3 +117,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"

@@ -44,8 +44,10 @@ $('#waterfall-container').waterfall({
     gutterWidth: 15,
     gutterHeight: 15,
     checkImagesLoaded: false,
+
     path: function (page) {
-        return 'rest/v1/index/indexImages/' + page;
+        return 'get_entry_json/?page='+page+"&tag_key=root&tag_value=root";
+        //return 'rest/v1/index/indexImages/?=page=' + page + "&tag_key=root&tag_value=root";
     }
 });
 
@@ -62,5 +64,6 @@ var slider = $(function () {
     });
     return slider
 });
+
 
 

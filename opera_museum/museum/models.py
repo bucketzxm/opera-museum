@@ -3,8 +3,7 @@ from django.db import models
 
 # Create your models here.
 import hashlib
-from PIL import Image
-
+from PIL import Image as PILImage
 
 class Tag(models.Model):
     id = models.AutoField(primary_key=True)
@@ -90,7 +89,7 @@ class Image(models.Model):
     def getImageSize(self):
         if self.image_size[0] != -1 and self.image_size[1] != -1:
             return self.image_size
-        self.image_size = Image.open(image_url.path).size
+        self.image_size = PILImage.open(self.image_url.path).size
         return self.image_size
 
     class Meta:

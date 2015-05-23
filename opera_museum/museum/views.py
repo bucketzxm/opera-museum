@@ -74,15 +74,22 @@ def entry_category(request):
         pass
 
 
-def get_entry_json(tag):
-    '''
-    get entry_json data filter by tag for waterfall
-    :param tag:
-    :return:
-    '''
+
+def get_entry_json(request):
+
+    tag_key = tag_value = page = None
+    if request.method == "GET":
+        tag_key = request.GET['tag_key']
+        tag_value = request.GET['tag_value']
+        page = request.GET['page']
+
+    tag = Tag.objects.all().filter(key=tag_key, value=tag_value)
+    # Tag name is error , return failed to json
+    if not tag:
+        return HttpResponse("failed")
+
 
     entries = Entry.objects.all().filter(tags=tag)
-    print(entries)
 
     # return json format data to waterfall
     total = len(entries)
@@ -90,20 +97,29 @@ def get_entry_json(tag):
     entry_list = [
         {
             # TODO dirty code here
-            "image": entry.images.all().first().image_url.url,  # pay attention to last .url
-            "width": entry.images.all().first().getImageSize()[0],
-            "height": entry.images.all().first().getImageSize()[1],
+            "image": entry.image_set.all().first().image_url.url,  # pay attention to last .url
+            "width": entry.image_set.all().first().getImageSize()[0],
+            "height": entry.image_set.all().first().getImageSize()[1],
         }
 
-        for entry in entries if entry.images.all().first()
+        for entry in entries if entry.image_set.all().first()
     ]
+
+    if page*10 > len(entry_list):
+        entry_list = entry_list[ (int(page)-1)*10 : ]
+    else:
+        entry_list = entry_list[ (page-1)*10:(page)*10:]
+
     json_data = json.dumps(
         {
             "total": total,
-            "result": json.dumps(entry_list),
+            # "result": json.dumps(entry_list),
+            "result": entry_list,
         }
     )
-    return json_data
+    return HttpResponse(json_data)
+
+
 
 
 @csrf_exempt
