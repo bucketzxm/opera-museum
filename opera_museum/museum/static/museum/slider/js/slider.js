@@ -3,21 +3,10 @@ var Slider = (function($) {
     // statics
     var defaults = {
         $container: $('#slider'),
-        items: [
-            '<div><img src="/static/museum/img/test.png"/></div>',
-            '<div><img src="/static/museum/img/test.png"/></div>',
-            '<div><img src="/static/museum/img/test.png"/></div>',
-            '<div><img src="/static/museum/img/test.png"/></div>',
-            '<div><img src="/static/museum/img/test.png"/></div>',
-            '<div><img src="/static/museum/img/test.png"/></div>',
-            '<div><img src="/static/museum/img/test.png"/></div>',
-            '<div><img src="/static/museum/img/test.png"/></div>',
-            '<div><img src="/static/museum/img/test.png"/></div>',
-            '<div><img src="/static/museum/img/test.png"/></div>',
-        ],
-        winHeight: 368,
-        winWidth: 643,
-        picPadding: 35
+        items: [],
+        winHeight: 0,
+        winWidth: 0,
+        picPadding: 0
     };
     
     function slideLeft() {
@@ -28,13 +17,15 @@ var Slider = (function($) {
     function Slider(options) {
         // get the options
         this.options = $.extend(true, {}, defaults, options);
+        console.log(options);
+        console.log(this.options);
         
         // calculate padded width and heigth
         this.paddedWidth = this.options.winWidth + 2 * this.options.picPadding;
         this.paddedHeight= this.options.winHeight + 2 * this.options.picPadding;
         
         // slider background (real container)
-        this.$container = $('<div class="sliderBackground"></div>')
+        this.$container = $('<div class="sliderBackground"></div>');
         this.options.$container.append(this.$container);
         
         // construct navigators

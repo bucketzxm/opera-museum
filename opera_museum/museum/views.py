@@ -5,7 +5,6 @@ from django.views.decorators.csrf import csrf_protect,csrf_exempt
 
 from models import Entry, Tag
 
-
 from django.template import loader
 import json
 
@@ -20,10 +19,8 @@ import json
 
 '''
 
-
 def index(request):
     return render_to_response("index.html")
-
 
 # look up detail for appointed entry
 def entry_detail(request):
@@ -46,7 +43,6 @@ def entry_detail(request):
 
     return render_to_response("")
 
-
 # support the entry
 def support_entry(request):
     if request.method == 'POST':
@@ -58,7 +54,6 @@ def support_entry(request):
             entry.support += 1
 
     return HttpResponse("")
-
 
 # look up entries in the same category
 def entry_category(request):
@@ -73,10 +68,7 @@ def entry_category(request):
     elif request.method == "POST":
         pass
 
-
-
 def get_entry_json(request):
-
     tag_key = tag_value = page = None
     if request.method == "GET":
         tag_key = request.GET['tag_key']
@@ -87,7 +79,6 @@ def get_entry_json(request):
     # Tag name is error , return failed to json
     if not tag:
         return HttpResponse("failed")
-
 
     entries = Entry.objects.all().filter(tags=tag)
 
@@ -119,28 +110,22 @@ def get_entry_json(request):
     )
     return HttpResponse(json_data)
 
-
-
-
-@csrf_exempt
 def get_slider_json(request):
-    res_data = '''{
-        $container: $('#slider'),
-        items: [
-            '<div><img src="/static/museum/img/test.png"/></div>',
-            '<div><img src="/static/museum/img/test.png"/></div>',
-        ],
-        winHeight: 368,
-        winWidth: 643,
-        picPadding: 35
-    }
-    '''
-
+    res_data = \
+'''
+{
+    "items": [
+        "<div><img src=\\"/static/museum/img/test.png\\"/></div>",
+        "<div><img src=\\"/static/museum/img/test.png\\"/></div>"
+    ],
+    "winHeight": 368,
+    "winWidth": 643,
+    "picPadding": 35
+}
+'''
     if request.method == "POST":
         return HttpResponse(res_data)
-
-    return HttpResponse("")
-
+    raise RuntimeError("/get_slider_json does not support GET method")
 
 def indexData(request, page):
     jsondata = """

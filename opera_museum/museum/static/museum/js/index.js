@@ -1,4 +1,3 @@
-// using jQuery
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie != '') {
@@ -14,6 +13,7 @@ function getCookie(name) {
     }
     return cookieValue;
 }
+
 var csrftoken = getCookie('csrftoken');
 $.ajaxSetup({
     beforeSend: function (xhr, settings) {
@@ -37,10 +37,9 @@ $.ajaxSetup({
     }
 });
 
-
 $('#waterfall-container').waterfall({
     itemCls: 'waterfall-item',
-    colWidth: 222,
+    colWidth: 640,
     gutterWidth: 15,
     gutterHeight: 15,
     checkImagesLoaded: false,
@@ -51,19 +50,16 @@ $('#waterfall-container').waterfall({
     }
 });
 
-var slider = $(function () {
-    var slider = null;
-    $.ajax({
-        type: 'post',
-        url: 'get_slider_json',
+var slider = null;
+$.ajax({
+    type: 'post',
+    url: 'get_slider_json',
 
-        success: function (data) {
-            slider = new Slider(data);
-            console.log(data);
-        }
-    });
-    return slider
+    success: function (data) {
+        console.log(data);
+        var options = $.parseJSON(data);
+        options["$container"] = $('#slider');
+        slider = new Slider(options);
+    }
 });
-
-
 
