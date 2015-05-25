@@ -45,8 +45,8 @@ $('#waterfall-container').waterfall({
     checkImagesLoaded: false,
 
     path: function (page) {
-        return 'get_entry_json/?page='+page+"&tag_key=root&tag_value=root";
-        //return 'rest/v1/index/indexImages/?=page=' + page + "&tag_key=root&tag_value=root";
+        //return 'get_entry_json/?page='+page+"&tag_key=root&tag_value=root";
+        return 'rest/v1/index/indexImages/'+ page ;
     }
 });
 

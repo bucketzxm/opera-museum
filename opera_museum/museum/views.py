@@ -89,8 +89,10 @@ def get_entry_json(request):
         {
             # TODO dirty code here
             "image": entry.image_set.all().first().image_url.url,  # pay attention to last .url
-            "width": entry.image_set.all().first().getImageSize()[0],
-            "height": entry.image_set.all().first().getImageSize()[1],
+            # "width": entry.image_set.all().first().getImageSize()[0],
+            # "height": entry.image_set.all().first().getImageSize()[1],
+            "width": 500,
+            "height": 500,
         }
 
         for entry in entries if entry.image_set.all().first()
@@ -108,7 +110,7 @@ def get_entry_json(request):
             "result": entry_list,
         }
     )
-    return HttpResponse(json_data)
+    return HttpResponse(content=json_data, content_type='application/json')
 
 def get_slider_json(request):
     res_data = \
