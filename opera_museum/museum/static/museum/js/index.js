@@ -39,7 +39,7 @@ $.ajaxSetup({
 
 $('#waterfall-container').waterfall({
     itemCls: 'waterfall-item',
-    colWidth: 640,
+    colWidth: 200,
     gutterWidth: 15,
     gutterHeight: 15,
     checkImagesLoaded: false,
