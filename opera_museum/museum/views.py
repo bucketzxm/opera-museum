@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from django.shortcuts import render, render_to_response, HttpResponse, redirect, RequestContext
-from django.views.decorators.csrf import csrf_protect,csrf_exempt
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
 from models import Entry, Tag
 
@@ -19,8 +19,10 @@ import json
 
 '''
 
+
 def index(request):
     return render_to_response("index.html")
+
 
 # look up detail for appointed entry
 def entry_detail(request):
@@ -33,7 +35,7 @@ def entry_detail(request):
         else:
             # add entry watched
             if len(entries) > 1:
-                #TODO If more than 1 entries , try to redirect to another page
+                # TODO If more than 1 entries , try to redirect to another page
                 return HttpResponse("")
             else:
                 entry = entries.first()
@@ -43,17 +45,18 @@ def entry_detail(request):
 
     return render_to_response("")
 
+
 # support the entry
 def support_entry(request):
     if request.method == 'POST':
         entry_id = request.POST['entryId']
         entry = Entry.objects.all().filter(id=entry_id)[0]
 
-
-        if entry.support<1000:
+        if entry.support < 1000:
             entry.support += 1
 
     return HttpResponse("")
+
 
 # look up entries in the same category
 def entry_category(request):
@@ -67,6 +70,7 @@ def entry_category(request):
         print(entries)
     elif request.method == "POST":
         pass
+
 
 def get_entry_json(request):
     tag_key = tag_value = page = None
@@ -91,18 +95,24 @@ def get_entry_json(request):
             "image": entry.image_set.all().first().image_url.url,  # pay attention to last .url
             # "width": entry.image_set.all().first().getImageSize()[0],
             # "height": entry.image_set.all().first().getImageSize()[1],
-            "width": 500,
-            "height": 500,
+            "width": 192,
+            "height": 288,
         }
 
         for entry in entries if entry.image_set.all().first()
     ]
 
-    if page*10 > len(entry_list):
-        entry_list = entry_list[ (int(page)-1)*10 : ]
-    else:
-        entry_list = entry_list[ (page-1)*10:(page)*10:]
+    length = len(entry_list)
+    start = 0
+    end = length
 
+    if start > end:
+        tmp = start
+        start = end
+        end = tmp
+
+    entry_list = entry_list[start: end]
+    print(entry_list)
     json_data = json.dumps(
         {
             "total": total,
@@ -112,22 +122,31 @@ def get_entry_json(request):
     )
     return HttpResponse(content=json_data, content_type='application/json')
 
+
 def get_slider_json(request):
-    res_data = \
-'''
-{
-    "items": [
-        "<div><img src=\\"/static/museum/img/test.png\\"/></div>",
-        "<div><img src=\\"/static/museum/img/test.png\\"/></div>"
-    ],
-    "winHeight": 368,
-    "winWidth": 643,
-    "picPadding": 35
-}
-'''
+    entry_list = Entry.objects.all().filter(slider_show=True)
+
+    items = [
+
+        '<div><img src="' + entry.image_set.all()[0].image_url.url + '"/></div>'
+
+        for entry in entry_list
+    ]
+
+    res_data = json.dumps(
+        {
+            "items": items,
+            "winHeight": 368,
+            "winWidth": 643,
+            "picPadding": 35,
+        }
+    )
+    print(res_data)
+
     if request.method == "POST":
         return HttpResponse(res_data)
     raise RuntimeError("/get_slider_json does not support GET method")
+
 
 def indexData(request, page):
     jsondata = """

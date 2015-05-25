@@ -52,6 +52,7 @@ class Entry(models.Model):
     support = models.IntegerField(default=0, verbose_name="点赞数量")
     watched = models.IntegerField(default=0, verbose_name="观看数量")
 
+    slider_show = models.BooleanField(default=False, verbose_name="首页跑马灯显示")
 
     @classmethod
     def find_related_entries(cls, name, content, ):
