@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
 from models import Entry, Tag
 
+from museum.tasks import add
 from django.template import loader
 import json
 
@@ -21,6 +22,7 @@ import json
 
 
 def index(request):
+    add.delay(1,2)
     return render_to_response("index.html")
 
 

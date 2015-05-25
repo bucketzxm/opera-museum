@@ -1,3 +1,4 @@
+#-*- coding: utf8 -*-
 """
 Django settings for opera_museum project.
 
@@ -27,9 +28,10 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+import djcelery
+djcelery.setup_loader()
+BROKER_URL = 'django://'
 # Application definition
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,6 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'museum',
+    'djcelery',
+    'kombu.transport.django',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -120,3 +124,7 @@ STATICFILES_DIRS = (
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
+
+
+# 定时任务
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
