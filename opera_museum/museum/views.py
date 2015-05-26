@@ -22,7 +22,6 @@ import json
 
 
 def index(request):
-    add.delay(1,2)
     return render_to_response("index.html")
 
 

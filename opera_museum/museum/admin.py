@@ -11,24 +11,6 @@ from models import Entry, Tag, Image
 from kombu.transport.django import models as kombu_models
 
 # Here we do some operatino before change entry in the admin site
-
-def delete_relate_entry(me, other):
-    me.relate_entry.remove(other)
-    print("Before we save the Entry")
-    other.relate_entry.remove(me)
-
-
-def add_relate_entry(me, other):
-    me.relate_entry.add(other)
-    other.relate_entry.add(me)
-
-
-def do_with_entry(entry, operate):
-    for r_entry in entry.relate_entry:
-        operate(entry, r_entry)
-
-
-
 from museum.tasks import add_related_entries, delete_relate_entries
 
 class EntryAdmin(admin.ModelAdmin):
@@ -42,6 +24,8 @@ class EntryAdmin(admin.ModelAdmin):
         # obj.entry = request.entry
         delete_relate_entries.delay(obj)
         obj.delete()
+
+
 
 
 
