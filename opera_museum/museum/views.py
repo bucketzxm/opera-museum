@@ -143,7 +143,6 @@ def get_slider_json(request):
             "picPadding": 35,
         }
     )
-    print(res_data)
 
     if request.method == "POST":
         return HttpResponse(res_data)
