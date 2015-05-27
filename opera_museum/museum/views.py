@@ -96,7 +96,7 @@ def get_entry_json(request):
             "image": entry.image_set.all().first().image_url.url,  # pay attention to last .url
             # "width": entry.image_set.all().first().getImageSize()[0],
             # "height": entry.image_set.all().first().getImageSize()[1],
-            "width": 192,
+            "width": 249,
             "height": 288,
         }
 
@@ -129,7 +129,7 @@ def get_slider_json(request):
 
     items = [
 
-        '<div><img src="' + entry.image_set.all()[0].image_url.url + '"/></div>'
+        '<div><img src="' + entry.image_set.all()[0].image_url.url + '" height = "293" width="513" /></div>'
 
         for entry in entry_list
     ]
@@ -137,9 +137,9 @@ def get_slider_json(request):
     res_data = json.dumps(
         {
             "items": items,
-            "winHeight": 368,
-            "winWidth": 643,
-            "picPadding": 35,
+            "winHeight": 293,
+            "winWidth": 513,
+            "picPadding": 21,
         }
     )
 

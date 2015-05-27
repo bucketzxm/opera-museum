@@ -1,6 +1,7 @@
 .sliderBackground {
 	border: 1px solid #e3e3e3;
 	width: 100%;
+    height: 335px;
 	background: url("../img/bk_rough.png");
 	overflow: hidden;
     position: relative;
@@ -9,4 +10,5 @@
 .slider .sliderHolder {
     margin: 0px auto;
 	float: left;
+
 }
