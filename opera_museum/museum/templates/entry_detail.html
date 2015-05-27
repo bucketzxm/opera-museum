@@ -3,3 +3,35 @@
 {% import "import_jquery.html" as jquery %}
 {% import "import_waterfall.html" as waterfall %}
 {% import "import_slider.html" as slider %}
+{% import "import_magnifier.html" as magnifier %}
+
+
+
+{% block head %}
+    {{ super() }}
+    {{ waterfall.waterfall_head() }}
+    {{ slider.slider_head() }}
+    {{ magnifier.magnifier.head() }}
+    <link rel="stylesheet" href="/static/museum/css/entry_detail.css">
+	<link rel="stylesheet" href="/static/museum/font-awesome/css/font-awesome.min.css">
+{% endblock %}
+
+{% block script %}
+    {{ super() }}
+    {{ jquery.jquery_script() }}
+    {{ waterfall.waterfall_script() }}
+    {{ slider.slider_script() }}
+    {{ magnifier.magnifier.script() }}
+    <script src="/static/museum/js/entry_detail.js"></script>
+{% endblock %}
+
+{% block content %}
+    {{ super() }}
+
+
+    {{ slider.slider_div("slider") }}
+    <div style="clear: both"></div>
+
+    {{ waterfall.waterfall_div(container_id="waterfall-container", render_id="waterfall-tpl", item_class="waterfall-item") }}
+
+{% endblock %}
