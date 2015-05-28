@@ -8,7 +8,7 @@ from models import Entry, Tag
 from museum.tasks import add
 from django.template import loader
 import json
-
+import logging
 '''
     index ---> 首页
 
@@ -20,6 +20,9 @@ import json
 
 '''
 
+# set a logger
+logger = logging.getLogger(__name__)
+
 
 def index(request):
     return render_to_response("index.html")
@@ -29,7 +32,7 @@ def index(request):
 def entry_detail(request):
     if request.method == 'GET':
         query_name = request.GET['name']
-        entries = Entry.objects.all().fileter(name=query_name)
+        entries = Entry.objects.all().filter(name=query_name)
 
         if not entries:
             return render_to_response("404.html")
@@ -72,6 +75,23 @@ def entry_category(request):
     elif request.method == "POST":
         pass
 
+
+def get_entry_detail_json(request):
+    if request.method == "POST":
+        id = request.POST['id']
+
+        entry = Entry.objects.all().filter(id = id)
+        entry = entry.first()
+
+        if not entry:
+            return HttpResponse("fail")
+
+        else:
+            return HttpResponse("success")
+
+
+
+    return HttpResponse("")
 
 def get_entry_json(request):
     tag_key = tag_value = page = None
