@@ -9,6 +9,7 @@ from museum.tasks import add
 from django.template import loader
 import json
 import logging
+
 '''
     index ---> 首页
 
@@ -28,7 +29,6 @@ def index(request):
     return render_to_response("index.html")
 
 
-
 def link_content(entry):
     content = entry.content
 
@@ -37,21 +37,22 @@ def link_content(entry):
         name_len = len(name)
         try:
             pos = content.find(name)
-        except ValueError,e:
+        except ValueError, e:
             logger.error(e)
             pos = -1
-        while(pos!=-1):
+        while (pos != -1):
             content_list = list(content)
-            insert_str = "<a href='entry_detail/?id=%s'>"% (str(relate_entry.id))
-            content_list.insert(pos, insert_str )
-            content_list.insert(pos+name_len+1, "</a>")
+            insert_str = "<a href='entry_detail/?id=%s'>" % (str(relate_entry.id))
+            content_list.insert(pos, insert_str)
+            content_list.insert(pos + name_len + 1, "</a>")
             content = "".join(content_list)
             try:
-                pos = content.find(name,pos+name_len+len(insert_str)+len("</a>"))
-            except ValueError ,e:
+                pos = content.find(name, pos + name_len + len(insert_str) + len("</a>"))
+            except ValueError, e:
                 logger.error(e)
                 pos = -1
     return content
+
 
 # look up detail for appointed entry
 def entry_detail(request):
@@ -79,25 +80,36 @@ def entry_detail(request):
 
     return render_to_response("")
 
+
+@csrf_exempt
 def get_entry_detail_json(request):
     '''
     for Entry detail page water fall
     :param request:
     :return:
     '''
-    if request.method == "POST":
-        id = request.POST['id']
+    if request.method == "GET":
+        id = request.GET['id']
 
-        entry = Entry.objects.all().filter(id = id)
+        entry = Entry.objects.all().filter(id=id)
         entry = entry.first()
 
         if not entry:
             return HttpResponse("fail")
-
         else:
-            return HttpResponse("success")
+            ret_json = '''
+            <div class="waterfall-item" >
+                <img src="http://wlog.cn/demo/waterfall/images/001.jpg" width="995" height="288">
+            </div>
+            <div class="waterfall-item" >
+              <embed src="http://player.youku.com/player.php/Type/Folder/Fid/23926126/Ob/1/sid/XOTY2MjcxMjg4/v.swf" quality="high" width="995" height="400" align="middle" allowScriptAccess="always" allowFullScreen="true" mode="transparent" type="application/x-shockwave-flash"></embed>
+            </div>
+            '''.replace("{0}",entry.video_url)
+
+            return HttpResponse(content=ret_json, content_type="html")
 
     return HttpResponse("")
+
 
 # support the entry
 def support_entry(request):
@@ -156,10 +168,8 @@ def get_entry_json(request):
             "width": 249,
             "height": 288,
         }
-
         for entry in entries if entry.image_set.all().first()
     ]
-
     length = len(entry_list)
     start = 0
     end = length
