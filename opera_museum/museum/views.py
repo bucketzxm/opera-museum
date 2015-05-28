@@ -28,6 +28,31 @@ def index(request):
     return render_to_response("index.html")
 
 
+
+def link_content(entry):
+    content = entry.content
+    print(content)
+    for relate_entry in entry.relate_entry.all():
+        name = relate_entry.name
+        name_len = len(name)
+        try:
+            pos = content.find(name)
+        except ValueError,e:
+            logger.error(e)
+            pos = -1
+        while(pos!=-1):
+            content_list = list(content)
+            insert_str = "<a href='entry_detail/?id=%s'>"% (str(relate_entry.id))
+            content_list.insert(pos, insert_str )
+            content_list.insert(pos+name_len+1, "</a>")
+            content = "".join(content_list)
+            try:
+                pos = content.find(name,pos+name_len+len(insert_str)+len("</a>"))
+            except ValueError ,e:
+                logger.error(e)
+                pos = -1
+    return content
+
 # look up detail for appointed entry
 def entry_detail(request):
     if request.method == 'GET':
