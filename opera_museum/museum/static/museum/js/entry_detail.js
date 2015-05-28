@@ -57,20 +57,7 @@ $('#waterfall-container').waterfall({
     }
 });
 
-var slider = null;
-$.ajax({
-    type: 'post',
-    url: 'get_slider_json',
-
-    success: function (data) {
-        console.log(data);
-        var options = $.parseJSON(data);
-        options["$container"] = $('#slider');
-        slider = new Slider(options);
-    }
-});
-
-
+// magnifier
 var evt = new Event(),
     m = new Magnifier(evt);
 

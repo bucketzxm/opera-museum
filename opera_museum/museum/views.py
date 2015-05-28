@@ -31,7 +31,7 @@ def index(request):
 
 def link_content(entry):
     content = entry.content
-    print(content)
+
     for relate_entry in entry.relate_entry.all():
         name = relate_entry.name
         name_len = len(name)
@@ -55,9 +55,14 @@ def link_content(entry):
 
 # look up detail for appointed entry
 def entry_detail(request):
+    '''
+    entry detail description in detail page
+    :param request:
+    :return:
+    '''
     if request.method == 'GET':
-        query_name = request.GET['name']
-        entries = Entry.objects.all().filter(name=query_name)
+        query_id = request.GET['id']
+        entries = Entry.objects.all().filter(id=query_id)
 
         if not entries:
             return render_to_response("404.html")
@@ -74,6 +79,25 @@ def entry_detail(request):
 
     return render_to_response("")
 
+def get_entry_detail_json(request):
+    '''
+    for Entry detail page water fall
+    :param request:
+    :return:
+    '''
+    if request.method == "POST":
+        id = request.POST['id']
+
+        entry = Entry.objects.all().filter(id = id)
+        entry = entry.first()
+
+        if not entry:
+            return HttpResponse("fail")
+
+        else:
+            return HttpResponse("success")
+
+    return HttpResponse("")
 
 # support the entry
 def support_entry(request):
@@ -101,24 +125,12 @@ def entry_category(request):
         pass
 
 
-def get_entry_detail_json(request):
-    if request.method == "POST":
-        id = request.POST['id']
-
-        entry = Entry.objects.all().filter(id = id)
-        entry = entry.first()
-
-        if not entry:
-            return HttpResponse("fail")
-
-        else:
-            return HttpResponse("success")
-
-
-
-    return HttpResponse("")
-
 def get_entry_json(request):
+    '''
+    for Index entry json request
+    :param request:
+    :return:
+    '''
     tag_key = tag_value = page = None
     if request.method == "GET":
         tag_key = request.GET['tag_key']

@@ -28,16 +28,6 @@
 {% block content %}
     {{ super() }}
 
-    <div id="preview">
-    <a class="magnifier-thumb-wrapper" href="http://en.wikipedia.org/wiki/File:Starry_Night_Over_the_Rhone.jpg">
-        <img id="thumb" src="http://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Starry_Night_Over_the_Rhone.jpg/200px-Starry_Night_Over_the_Rhone.jpg">
-    </a>
-{#    <div class="magnifier-preview" id="preview" style="width: 200px; height: 133px">Starry Night Over The Rhone<br>by Vincent van Gogh</div>#}
-    </div>
-
-    {{ slider.slider_div("slider") }}
-    <div style="clear: both"></div>
-
     {{ waterfall.waterfall_div(container_id="waterfall-container", render_id="waterfall-tpl", item_class="waterfall-item") }}
 
 {% endblock %}

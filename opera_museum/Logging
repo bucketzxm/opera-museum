@@ -1,0 +1,214 @@
+Internal Server Error: /entry_detail
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 64, in entry_detail
+    query_name = request.GET['name']
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/utils/datastructures.py", line 322, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "'name'"
+Internal Server Error: /entry_detail
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 64, in entry_detail
+    query_name = request.GET['name']
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/utils/datastructures.py", line 322, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "'name'"
+Internal Server Error: /entry_detail
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 64, in entry_detail
+    query_name = request.GET['name']
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/utils/datastructures.py", line 322, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "'name'"
+Internal Server Error: /entry_detail
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 64, in entry_detail
+    query_id = request.GET['id']
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/utils/datastructures.py", line 322, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "'id'"
+Internal Server Error: /entry_detail/get_entry_detail_json/
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 65, in entry_detail
+    entries = Entry.objects.all().filter(id=query_id)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/query.py", line 679, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/query.py", line 697, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1304, in add_q
+    clause, require_inner = self._add_q(where_part, self.used_aliases)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1331, in _add_q
+    current_negated=current_negated, connector=connector, allow_joins=allow_joins)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1203, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1096, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/lookups.py", line 96, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/lookups.py", line 134, in get_prep_lookup
+    return self.lhs.output_field.get_prep_lookup(self.lookup_name, self.rhs)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 727, in get_prep_lookup
+    return self.get_prep_value(value)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 985, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'undefined'
+Internal Server Error: /entry_detail/get_slider_json
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 80, in entry_detail
+    return render_to_response("")
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/shortcuts.py", line 39, in render_to_response
+    content = loader.render_to_string(template_name, context, using=using)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/template/loader.py", line 98, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/template/loader.py", line 46, in get_template
+    raise TemplateDoesNotExist(template_name)
+TemplateDoesNotExist
+Internal Server Error: /entry_detail/get_entry_detail_json/
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 65, in entry_detail
+    entries = Entry.objects.all().filter(id=query_id)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/query.py", line 679, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/query.py", line 697, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1304, in add_q
+    clause, require_inner = self._add_q(where_part, self.used_aliases)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1331, in _add_q
+    current_negated=current_negated, connector=connector, allow_joins=allow_joins)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1203, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1096, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/lookups.py", line 96, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/lookups.py", line 134, in get_prep_lookup
+    return self.lhs.output_field.get_prep_lookup(self.lookup_name, self.rhs)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 727, in get_prep_lookup
+    return self.get_prep_value(value)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 985, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'undefined'
+Internal Server Error: /entry_detail/get_slider_json
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 80, in entry_detail
+    return render_to_response("")
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/shortcuts.py", line 39, in render_to_response
+    content = loader.render_to_string(template_name, context, using=using)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/template/loader.py", line 98, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/template/loader.py", line 46, in get_template
+    raise TemplateDoesNotExist(template_name)
+TemplateDoesNotExist
+Internal Server Error: /entry_detail
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 64, in entry_detail
+    query_id = request.GET['id']
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/utils/datastructures.py", line 322, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "'id'"
+Internal Server Error: /entry_detail/
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 64, in entry_detail
+    query_id = request.GET['id']
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/utils/datastructures.py", line 322, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "'id'"
+Internal Server Error: /entry_detail/get_entry_detail_json/
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 65, in entry_detail
+    entries = Entry.objects.all().filter(id=query_id)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/query.py", line 679, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/query.py", line 697, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1304, in add_q
+    clause, require_inner = self._add_q(where_part, self.used_aliases)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1331, in _add_q
+    current_negated=current_negated, connector=connector, allow_joins=allow_joins)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1203, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1096, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/lookups.py", line 96, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/lookups.py", line 134, in get_prep_lookup
+    return self.lhs.output_field.get_prep_lookup(self.lookup_name, self.rhs)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 727, in get_prep_lookup
+    return self.get_prep_value(value)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 985, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'undefined'
+Internal Server Error: /entry_detail/get_slider_json
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 80, in entry_detail
+    return render_to_response("")
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/shortcuts.py", line 39, in render_to_response
+    content = loader.render_to_string(template_name, context, using=using)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/template/loader.py", line 98, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/template/loader.py", line 46, in get_template
+    raise TemplateDoesNotExist(template_name)
+TemplateDoesNotExist
+Internal Server Error: /entry_detail/get_entry_detail_json/
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 65, in entry_detail
+    entries = Entry.objects.all().filter(id=query_id)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/query.py", line 679, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/query.py", line 697, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1304, in add_q
+    clause, require_inner = self._add_q(where_part, self.used_aliases)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1331, in _add_q
+    current_negated=current_negated, connector=connector, allow_joins=allow_joins)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1203, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1096, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/lookups.py", line 96, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/lookups.py", line 134, in get_prep_lookup
+    return self.lhs.output_field.get_prep_lookup(self.lookup_name, self.rhs)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 727, in get_prep_lookup
+    return self.get_prep_value(value)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 985, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'undefined'
+Internal Server Error: /entry_detail/get_slider_json
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 80, in entry_detail
+    return render_to_response("")
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/shortcuts.py", line 39, in render_to_response
+    content = loader.render_to_string(template_name, context, using=using)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/template/loader.py", line 98, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/template/loader.py", line 46, in get_template
+    raise TemplateDoesNotExist(template_name)
+TemplateDoesNotExist
