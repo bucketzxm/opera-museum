@@ -430,3 +430,88 @@ Traceback (most recent call last):
   File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 116, in get_entry_detail_json
     '''% (entry.video_url)
 TypeError: not all arguments converted during string formatting
+Internal Server Error: /entry_detail
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 79, in entry_detail
+    return render_to_response("entry_detail.html")
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/shortcuts.py", line 39, in render_to_response
+    content = loader.render_to_string(template_name, context, using=using)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/template/loader.py", line 98, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/template/loader.py", line 42, in get_template
+    return engine.get_template(template_name)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/template/backends/jinja2.py", line 48, in get_template
+    sys.exc_info()[2])
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/template/backends/jinja2.py", line 42, in get_template
+    return Template(self.env.get_template(template_name))
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/jinja2/environment.py", line 791, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/jinja2/environment.py", line 765, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/jinja2/environment.py", line 554, in compile
+    self.handle_exception(exc_info, source_hint=source)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/jinja2/environment.py", line 742, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/templates/entry_detail.html", line 32, in template
+    {{ waterfall.waterfall_div(container_id="waterfall-container" }}
+TemplateSyntaxError: ("unexpected '}', expected ')'",)
+Internal Server Error: /entry_detail
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 79, in entry_detail
+    return render_to_response("entry_detail.html")
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/shortcuts.py", line 39, in render_to_response
+    content = loader.render_to_string(template_name, context, using=using)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/template/loader.py", line 98, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/template/loader.py", line 42, in get_template
+    return engine.get_template(template_name)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/template/backends/jinja2.py", line 48, in get_template
+    sys.exc_info()[2])
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/template/backends/jinja2.py", line 42, in get_template
+    return Template(self.env.get_template(template_name))
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/jinja2/environment.py", line 791, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/jinja2/environment.py", line 765, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/jinja2/environment.py", line 554, in compile
+    self.handle_exception(exc_info, source_hint=source)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/jinja2/environment.py", line 742, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/templates/entry_detail.html", line 32, in template
+    {{ waterfall.waterfall_div(container_id="waterfall-container" }}
+TemplateSyntaxError: ("unexpected '}', expected ')'",)
+Internal Server Error: /get_entry_detail_json/
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 112, in get_entry_detail_json
+    if entry.vedio.url:
+AttributeError: 'Entry' object has no attribute 'vedio'
+Internal Server Error: /get_entry_detail_json/
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 112, in get_entry_detail_json
+    if entry.vedio.url:
+AttributeError: 'Entry' object has no attribute 'vedio'
+Internal Server Error: /get_entry_detail_json/
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 112, in get_entry_detail_json
+    if entry.video.url:
+AttributeError: 'Entry' object has no attribute 'video'

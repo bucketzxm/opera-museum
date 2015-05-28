@@ -50,6 +50,8 @@ $('#waterfall-container').waterfall({
     }
 });
 
+
+
 var slider = null;
 $.ajax({
     type: 'post',

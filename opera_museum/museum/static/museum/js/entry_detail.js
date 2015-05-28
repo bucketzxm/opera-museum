@@ -89,6 +89,41 @@ $('#waterfall-container').waterfall({
     }
 });
 
+
+
+$('#waterfall-container_two').waterfall({
+    itemCls: 'waterfall-item',
+    colWidth: 250,
+    gutterWidth: 15,
+    gutterHeight: 15,
+    checkImagesLoaded: false,
+    maxCol: 4,
+    maxPage:undefined,
+    dataType: "json",
+    params: {
+        "id": getUrlParams("id"),
+        "page": 1
+    },
+    path: function (page) {
+        return 'get_entry_json/?page='+page+"&tag_key=root&tag_value=root";
+    },
+    callbacks: {
+        renderData: function (data, dataType) {
+            var tpl,
+                template;
+            if (dataType === 'json' || dataType === 'jsonp') { // json或jsonp格式
+                tpl = $('#waterfall-tpl').html();
+                template = Handlebars.compile(tpl);
+
+                return template(data);
+            } else { // html格式
+                return data;
+            }
+        }
+    }
+});
+
+
 // magnifier
 var evt = new Event(),
     m = new Magnifier(evt);

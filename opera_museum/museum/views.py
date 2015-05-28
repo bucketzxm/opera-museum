@@ -51,7 +51,8 @@ def link_content(entry):
             except ValueError, e:
                 logger.error(e)
                 pos = -1
-    return content
+    print(content)
+    return "'" + content + "'"
 
 
 # look up detail for appointed entry
@@ -98,14 +99,23 @@ def get_entry_detail_json(request):
             return HttpResponse("fail")
         else:
             ret_json = '''
+
+            <div class="waterfall-item">
+            <div style="width:995">
+                <p>''' + link_content(entry) + '''</p>
+
+            </div>
             <div class="waterfall-item" >
                 <img src="http://wlog.cn/demo/waterfall/images/001.jpg" width="995" height="288">
             </div>
-            <div class="waterfall-item" >
-              <embed src="http://player.youku.com/player.php/Type/Folder/Fid/23926126/Ob/1/sid/XOTY2MjcxMjg4/v.swf" quality="high" width="995" height="400" align="middle" allowScriptAccess="always" allowFullScreen="true" mode="transparent" type="application/x-shockwave-flash"></embed>
-            </div>
-            '''.replace("{0}",entry.video_url)
-
+            '''
+            if entry.video_url:
+                ret_json = ret_json + '''
+                <div class="waterfall-item" >
+                    <embed src=''' + entry.video_url + '''
+                     quality="high" width="995" height="400" align="middle" allowScriptAccess="always" allowFullScreen="true" mode="transparent" type="application/x-shockwave-flash"></embed>
+                </div>
+                '''
             return HttpResponse(content=ret_json, content_type="html")
 
     return HttpResponse("")
@@ -180,7 +190,6 @@ def get_entry_json(request):
         end = tmp
 
     entry_list = entry_list[start: end]
-    print(entry_list)
     json_data = json.dumps(
         {
             "total": total,
