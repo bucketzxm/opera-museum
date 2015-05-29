@@ -134,15 +134,16 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
-        'file': {
+        'INFO': {
             'level': 'INFO',
             'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, "Logging"),
+            'filename': os.path.join(BASE_DIR, "Logging_INFO"),
         },
+
     },
     'loggers': {
         'django.request': {
-            'handlers': ['file'],
+            'handlers': ['INFO'],
             'level': 'INFO',
             'propagate': True,
         },
