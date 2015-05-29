@@ -66,10 +66,10 @@ var Slider = (function($) {
         $nav.css("left", "30px");
         $nav.css("float", "left");
         $nav.css("background", "url(/static/museum/slider/img/nav_previous.png)");
-        $nav.css("width", 64);
-        $nav.css("height", 64);
+        $nav.css("width", 30);
+        $nav.css("height", 95);
         $nav.css("position", "absolute");
-        $nav.css("top", "50%");
+        $nav.css("top", "30%");
         return $nav;
     };
     
@@ -78,10 +78,10 @@ var Slider = (function($) {
         $nav.css("right", "30px");
         $nav.css("float", "right");
         $nav.css("background", "url(/static/museum/slider/img/nav_next.png)");
-        $nav.css("width", 64);
-        $nav.css("height", 64);
+        $nav.css("width", 30);
+        $nav.css("height", 95);
         $nav.css("position", "absolute");
-        $nav.css("top", "50%");
+        $nav.css("top", "30%");
         return $nav;
     };
     
