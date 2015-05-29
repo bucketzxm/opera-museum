@@ -77,7 +77,31 @@ def entry_detail(request):
                 entry = entries.first()
                 if entry.watched <= 1000:
                     entry.watched += 1
-                return render_to_response("entry_detail.html")
+                
+                name = '孔庆晓'
+                content = '''毕业于上海戏剧学院灯光技术与设计专业艺术硕士，现任上海舞台美术学会副秘书长。现就职于上海戏剧学院舞台美术系，担任上海戏剧学院灯光实验室主任助理。
+担任《最后的瞬间》，《爆玉米花》，《白骨精列传》，《麦克白》等话剧的灯光设计；昆曲《南柯记》灯光设计；沪剧《军礼》灯光设计；滑稽戏《乌鸦与麻雀》灯光设计；童话剧《快乐木马》灯光设计；《水磨新调》张军新昆曲新年慈善音乐会灯光设计；西藏话剧团话剧《解放，解放！》灯光设计；新媒体情景诗《追梦·中国》灯光设计；滇剧《赛装姑娘》灯光设计；老码头墙体灯光秀《上海故事》灯光设计。
+担任2009上海科技活动周开幕式，2009昆山啤酒节开幕式， 2012年上海警备区庆八一《霓虹•军魂》主题晚会，2012常熟烟花秀开幕式， 2014年《万科——绽放上海精彩高端品牌发布会》等大型活动的灯光设计。
+担任《着色2012》十周年服装秀视频及灯光设计；2012德国艾森莎士比亚戏剧节上戏参演剧目《罗密欧与朱丽叶》视觉设计；2013-2014年《汇梦上戏》微电影颁奖盛典视频及灯光设计，青春励志巨制《大人物》舞台及灯光设计。 2012年中福会少年宫小伙伴艺术团赴德访问演出特邀灯光设计。2014年美国南加州华人庆祝中华人民共和国建国65周年上海市文联赴美庆祝演出《歌唱祖国》灯光设计。2014年马来西亚音乐剧《观音菩萨》技术顾问。
+翻译著作：《戏剧舞台灯光设计》（【德】马克斯·凯勒上海人民美术出版社 2009.4）。
+获奖情况：童话剧《快乐木马》获第六届江苏省戏剧节剧目奖；话剧《白骨精列传》获第二届上海舞台美术学会“学会奖”灯光设计奖；话剧《解放，解放！》2012—2013年国家舞台艺术精品工程精品奖，第十四届文华奖文华剧目奖；滇剧《赛装姑娘》获云南省第十二届新剧目展演灯光设计二等奖；《天之骄子》获第四届中国校园戏剧节中国戏剧奖·校园戏剧奖“优秀剧目奖”。'''
+                carousel_images = ['/media/TestImages/phantom01.jpg', '/media/TestImages/phantom02.jpg', '/media/TestImages/phantom03.jpg']
+                carousel_description = '孔庆晓照片'
+                video_name = 'Video name here!'
+                video_url = '<embed src="http://player.youku.com/player.php/sid/XNjg5MjY5NjY4/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>'
+                video_description = 'video description here!'
+                relate_entry = ['haha', 'hehe']
+                
+                return render_to_response("entry_detail.html",
+                                          { 'name': name
+                                          , 'content': content.split('\n')
+                                          , 'carousel_images': carousel_images
+                                          , 'carousel_description': carousel_description
+                                          , 'video_name': video_name
+                                          , 'video_url': video_url
+                                          , 'video_description': video_description
+                                          , 'support': entry.support
+                                          , 'watched': entry.watched })
 
     return render_to_response("")
 
