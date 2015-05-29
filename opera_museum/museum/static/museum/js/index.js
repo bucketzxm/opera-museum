@@ -52,6 +52,18 @@ $('#waterfall-container').waterfall({
 
 
 
+$(document).ready(function(){
+
+
+  $("#category a").mouseover(function(){
+    $(this).addClass("current");
+  });
+  $("#category a").mouseout(function(){
+    $(this).removeClass("current");
+  });
+});
+
+
 var slider = null;
 $.ajax({
     type: 'post',
@@ -64,4 +76,7 @@ $.ajax({
         slider = new Slider(options);
     }
 });
+
+
+
 
