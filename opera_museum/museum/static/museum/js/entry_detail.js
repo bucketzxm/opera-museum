@@ -56,82 +56,17 @@ function getUrlParams(TheName) {
     return TheValue;
 }
 
-
+/*
 $('#waterfall-container').waterfall({
     itemCls: 'waterfall-item',
-    colWidth: 995,
-    gutterWidth: 15,
-    gutterHeight: 15,
-    checkImagesLoaded: false,
-    maxCol: 1,
-    maxPage:1,
-    dataType: "html",
-    params: {
-        "id": getUrlParams("id"),
-        "page": 1
-    },
-    path: function () {
-        return "/get_entry_detail_json/"
-    },
-    callbacks: {
-        renderData: function (data, dataType) {
-            var tpl,
-                template;
-            if (dataType === 'json' || dataType === 'jsonp') { // json或jsonp格式
-                tpl = $('#waterfall-tpl').html();
-                template = Handlebars.compile(tpl);
-
-                return template(data);
-            } else { // html格式
-                return data;
-            }
-        }
-    }
-});
-
-
-
-$('#waterfall-container_two').waterfall({
-    itemCls: 'waterfall-item',
-    colWidth: 250,
+    colWidth: 200,
     gutterWidth: 15,
     gutterHeight: 15,
     checkImagesLoaded: false,
     maxCol: 4,
-    maxPage:undefined,
-    dataType: "json",
-    params: {
-        "id": getUrlParams("id"),
-        "page": 1
-    },
     path: function (page) {
-        return 'get_entry_json/?page='+page+"&tag_key=root&tag_value=root";
-    },
-    callbacks: {
-        renderData: function (data, dataType) {
-            var tpl,
-                template;
-            if (dataType === 'json' || dataType === 'jsonp') { // json或jsonp格式
-                tpl = $('#waterfall-tpl').html();
-                template = Handlebars.compile(tpl);
-
-                return template(data);
-            } else { // html格式
-                return data;
-            }
-        }
+        return '/get_entry_json/?page='+page+"&tag_key=root&tag_value=root";
+        //return 'rest/v1/index/indexImages/'+ page ;
     }
 });
-
-
-// magnifier
-var evt = new Event(),
-    m = new Magnifier(evt);
-
-m.attach({
-    thumb: '#thumb',
-    large: 'http://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Starry_Night_Over_the_Rhone.jpg/400px-Starry_Night_Over_the_Rhone.jpg',
-    largeWrapper: 'preview',
-    mode: "inside",
-    zoom: 1
-});
+*/
