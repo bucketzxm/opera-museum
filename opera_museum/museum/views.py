@@ -219,19 +219,14 @@ def get_entry_json(request):
     total = len(entries)
 
     entry_list = [
-        # {
-        #     # TODO dirty code here
-        #     "image": entry.image_set.all().first().image_url.url,  # pay attention to last .url
-        #     # "width": entry.image_set.all().first().getImageSize()[0],
-        #     # "height": entry.image_set.all().first().getImageSize()[1],
-        #     "width": 249,
-        #     "height": 288,
-        # }
-        entry for entry in entries if entry.image_set.all().first()
+        {
+            # TODO dirty code here
+            "image": entry.image_set.all().first().image_url.url,  # pay attention to last .url
+        }
+        for entry in entries if entry.image_set.all().first()
     ]
-    length = len(entry_list)
     start = 0
-    end = length
+    end = len(entry_list)
 
     if start > end:
         tmp = start
@@ -239,21 +234,13 @@ def get_entry_json(request):
         end = tmp
 
     entry_list = entry_list[start: end]
-
-    ret_html = ""
     print(entry_list)
-    for entry in entry_list:
-        ret_html += generate_entry_html(entry)
-
-    # json_data = json.dumps(
-    #     {
-    #         "total": total,
-    #         # "result": json.dumps(entry_list),
-    #         "result": entry_list,
-    #     }
-    # )
-    return HttpResponse(content=ret_html, content_type='html')
-
+    json_data = json.dumps({
+        "total": total,
+        # "result": json.dumps(entry_list),
+        "result": entry_list,
+    })
+    return HttpResponse(content=json_data, content_type='application/json')
 
 def get_slider_json(request):
     entry_list = Entry.objects.all().filter(slider_show=True)
