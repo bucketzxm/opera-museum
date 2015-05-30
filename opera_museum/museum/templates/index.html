@@ -1,6 +1,5 @@
 {% extends "baseNavbarFooter.html" %}
 
-{% import "import_jquery.html" as jquery %}
 {% import "import_waterfall.html" as waterfall %}
 {% import "import_slider.html" as slider %}
 
@@ -14,61 +13,14 @@
 
 {% block script %}
     {{ super() }}
-    {{ jquery.jquery_script() }}
     {{ waterfall.waterfall_script() }}
     {{ slider.slider_script() }}
+    <script src="/static/museum/js/util.js"></script>
     <script src="/static/museum/js/index.js"></script>
 {% endblock %}
 
 {% block content %}
     {{ super() }}
-
-<!--
-    <div class="slide">
-		<img class="slide-control-left" src="/static/museum/img/left.png" alt="left" />
-		<img class="slide-control-right" src="/static/museum/img/right.png" alt="right" />
-		<div class="holder">
-			<img src="/static/museum/img/sample.png" alt="sample" />
-			<p>杂志文字说明</p>
-		</div>
-		<div class="holder">
-			<img src="/static/museum/img/sample.png" alt="sample" />
-			<p>杂志文字说明</p>
-		</div>
-		<div class="holder">
-			<img src="/static/museum/img/sample.png" alt="sample" />
-			<p>杂志文字说明</p>
-		</div>
-		<div class="holder">
-			<img src="/static/museum/img/sample.png" alt="sample" />
-			<p>杂志文字说明</p>
-		</div>
-		<div class="holder">
-			<img src="/static/museum/img/sample.png" alt="sample" />
-			<p>杂志文字说明</p>
-		</div>
-		<div class="holder">
-			<img src="/static/museum/img/sample.png" alt="sample" />
-			<p>杂志文字说明</p>
-		</div>
-		<div class="holder">
-			<img src="/static/museum/img/sample.png" alt="sample" />
-			<p>杂志文字说明</p>
-		</div>
-		<div class="holder">
-			<img src="/static/museum/img/sample.png" alt="sample" />
-			<p>杂志文字说明</p>
-		</div>
-		<div class="holder">
-			<img src="/static/museum/img/sample.png" alt="sample" />
-			<p>杂志文字说明</p>
-		</div>
-	</div>
-
-	<div class="shadow">
-		<img src="/static/museum/img/shadow.png" alt="shadow" />
-	</div>
--->
 
     {{ slider.slider_div("slider") }}
     <div style="clear: both"></div>

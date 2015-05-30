@@ -4,29 +4,30 @@
 
 
 {% macro navbar_script() %}
-    
+    <script src="/static/museum/js/navbar.js"></script>
 {% endmacro %}
 
 {% macro navbar_div() %}
     <div class="title">
-		<img class="dtam" src="/static/museum/img/DTAM.png" alt="DTAM" />
-		<img class="sta_logo" src="/static/museum/img/STA_LOGO.png" alt="STA_LOGO" />
-		<div id="category" class="nav">
-			<a id="index" class="" href="">首页</a>
-		    <a id="aboutus" class="" href="#">关于我们</a>
-		    <a id="news" class="" href="#">新闻栏目</a>
-		    <a id="research" class="" href="#">研究栏目</a>
-		    <a id="mag" class="" href="#">杂志期刊</a>
-		    <a id="dtam" class="" href="#">多维度戏剧博物馆</a>
-		</div>
-	</div>
-	<div class="search">
-		<form action="#">
-			<div class="input-group">
-  				<span class="input-group-addon-left"><i class="fa fa-search"></i></span>
-  					<input type="text" class="form-control" placeholder="输入关键词" name="search" />
-  				<span class="input-group-addon-right"><i class="fa fa-bars"></i></span>
-			</div>
-		</form>
-	</div>
+        <img class="dtam" src="/static/museum/img/DTAM.png" alt="DTAM"/>
+        <img class="sta_logo" src="/static/museum/img/STA_LOGO.png" alt="STA_LOGO"/>
+
+        <div id="category" class="nav">
+            <a id="index" class="" href="/">首页</a>
+            <a id="aboutus" class="" href="#">关于我们</a>
+            <a id="news" class="" href="#">新闻栏目</a>
+            <a id="research" class="" href="#">研究栏目</a>
+            <a id="mag" class="" href="#">杂志期刊</a>
+            <a id="dtam" class="" href="#">多维度戏剧博物馆</a>
+        </div>
+    </div>
+    <div class="search">
+        <form action="#">
+            <div class="input-group">
+                <span class="input-group-addon-left"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control" placeholder="输入关键词" name="search"/>
+                <span class="input-group-addon-right"><i class="fa fa-bars"></i></span>
+            </div>
+        </form>
+    </div>
 {% endmacro %}

@@ -1,9 +1,3 @@
-/**
- *
- * Created by simon on 5/27/15.
- */
-
-
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie != '') {
@@ -55,18 +49,3 @@ function getUrlParams(TheName) {
     }
     return TheValue;
 }
-
-/*
-$('#waterfall-container').waterfall({
-    itemCls: 'waterfall-item',
-    colWidth: 200,
-    gutterWidth: 15,
-    gutterHeight: 15,
-    checkImagesLoaded: false,
-    maxCol: 4,
-    path: function (page) {
-        return '/get_entry_json/?page='+page+"&tag_key=root&tag_value=root";
-        //return 'rest/v1/index/indexImages/'+ page ;
-    }
-});
-*/

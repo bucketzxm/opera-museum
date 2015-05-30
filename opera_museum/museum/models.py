@@ -51,7 +51,7 @@ class Entry(models.Model):
     tags = models.ManyToManyField(Tag, blank=True, verbose_name=u"属性分类")
     relate_entry = models.ManyToManyField('self', blank=True, verbose_name="相关词条")
 
-    support = models.IntegerField(default=0, verbose_name="点赞数量")
+    like = models.IntegerField(default=0, verbose_name="点赞数量")
     watched = models.IntegerField(default=0, verbose_name="观看数量")
 
     slider_show = models.BooleanField(default=False, verbose_name="首页跑马灯显示")

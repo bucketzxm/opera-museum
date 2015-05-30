@@ -37,32 +37,33 @@ $.ajaxSetup({
     }
 });
 
+var waterfallColumnWidth = 249;
 $('#waterfall-container').waterfall({
     itemCls: 'waterfall-item',
-    colWidth: 200,
+    colWidth: waterfallColumnWidth,
     gutterWidth: 15,
     gutterHeight: 15,
     checkImagesLoaded: false,
     maxCol: 4,
+    page: 1,
+    dataType: 'json',
     path: function (page) {
-        return 'get_entry_json/?page='+page+"&tag_key=root&tag_value=root";
+        return 'get_entry_json/?page=' + page + "&tag_key=root&tag_value=root";
         //return 'rest/v1/index/indexImages/'+ page ;
+    },
+    callbacks: {
+        renderData: function (data, dataType) {
+			if (dataType === 'json' ||  dataType === 'jsonp') {
+				var tpl = $('#waterfall-tpl').html();
+				var template = Handlebars.compile(tpl);
+                var html = template(data);
+                return Waterfall_addSizeRestraintToImage($(html), waterfallColumnWidth);
+			} else { // html format
+				return data;
+			}
+		}
     }
 });
-
-
-
-$(document).ready(function(){
-
-
-  $("#category a").mouseover(function(){
-    $(this).addClass("current");
-  });
-  $("#category a").mouseout(function(){
-    $(this).removeClass("current");
-  });
-});
-
 
 var slider = null;
 $.ajax({
@@ -70,13 +71,8 @@ $.ajax({
     url: 'get_slider_json',
 
     success: function (data) {
-        console.log(data);
         var options = $.parseJSON(data);
         options["$container"] = $('#slider');
         slider = new Slider(options);
     }
 });
-
-
-
-

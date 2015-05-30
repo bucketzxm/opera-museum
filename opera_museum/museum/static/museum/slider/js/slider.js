@@ -18,8 +18,8 @@ var Slider = (function($) {
     function Slider(options) {
         // get the options
         this.options = $.extend(true, {}, defaults, options);
-        console.log(options);
-        console.log(this.options);
+        //console.log(options);
+        //console.log(this.options);
         
         // calculate padded width and heigth
         this.paddedWidth = this.options.winWidth + 2 * this.options.picPadding;

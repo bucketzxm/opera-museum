@@ -102,7 +102,6 @@ def entry_detail(request):
                                           , 'video_description': video_description
                                           , 'support': entry.support
                                           , 'watched': entry.watched })
-
     return render_to_response("")
 
 
@@ -146,15 +145,15 @@ def get_entry_detail_json(request):
 
 
 # support the entry
-def support_entry(request):
+def like_entry(request):
     if request.method == 'POST':
         entry_id = request.POST['entryId']
         entry = Entry.objects.all().filter(id=entry_id)[0]
 
         if entry.support < 1000:
             entry.support += 1
-
-    return HttpResponse("")
+            entry.save()
+    return HttpResponse("success")
 
 
 # look up entries in the same category
@@ -169,6 +168,54 @@ def entry_category(request):
         print(entries)
     elif request.method == "POST":
         pass
+
+
+def generate_entry_html(entry):
+    _max_content_len = 200  # max length of entry content
+
+    head = '<div class="waterfall-item" entryId='+ str(entry.id)+'>'
+    tail = '</div>'
+    img_func = lambda entry: entry.image_set.all().first()
+    img = img_func(entry)
+    standard_width = 249
+    height = img.getImageSize()[1]*1.0 / img.getImageSize()[0] * standard_width
+
+    img_html = '<img src="' + img.image_url.url + '" width="249" height="' + str(height) + '">'
+
+    title = '<p>' + entry.name + '</p>'
+    content = '<div style="width: 249px"> <p>' + entry.content[0:_max_content_len] + '</p></div>'
+
+    like_img = '<img id="like" height="20" weight="20" src="/static/museum/img/like.png" />'
+    watch_img = '<img id="watch" height="20" weight="20" src="/static/museum/img/watched.png" />'
+    like_and_watch = '<div>' + like_img +'<p>' + str(entry.like)  +'</p>' + watch_img + '<p>' + str(entry.watched) +'</p>' + '</div>'
+    ret_html = head + img_html + title + content + like_and_watch + tail
+
+    return ret_html
+
+
+def get_relate_entry_json(request):
+    if request.method == "GET":
+        id = request.GET['id']
+        entry = Entry.objects.all().filter(id=id)
+
+        try:
+            entry = entry[0]
+        except IndexError as e:
+            logger.error(e)
+            return HttpResponse('/')
+
+
+        relate_entry_html_list = [generate_entry_html(related) for related in entry.relate_entry.all()]
+        ret_data = "".join(relate_entry_html_list)
+
+        return HttpResponse(content=ret_data, content_type="html")
+
+    try:
+        raise RuntimeError("/get_slider_json does not support GET method")
+    except:
+        logger.error("get_slider_json does not support GET method")
+    finally:
+        return HttpResponse("/")
 
 
 def get_entry_json(request):
@@ -197,16 +244,11 @@ def get_entry_json(request):
         {
             # TODO dirty code here
             "image": entry.image_set.all().first().image_url.url,  # pay attention to last .url
-            # "width": entry.image_set.all().first().getImageSize()[0],
-            # "height": entry.image_set.all().first().getImageSize()[1],
-            "width": 249,
-            "height": 288,
         }
         for entry in entries if entry.image_set.all().first()
     ]
-    length = len(entry_list)
     start = 0
-    end = length
+    end = len(entry_list)
 
     if start > end:
         tmp = start
@@ -214,15 +256,13 @@ def get_entry_json(request):
         end = tmp
 
     entry_list = entry_list[start: end]
-    json_data = json.dumps(
-        {
-            "total": total,
-            # "result": json.dumps(entry_list),
-            "result": entry_list,
-        }
-    )
+    print(entry_list)
+    json_data = json.dumps({
+        "total": total,
+        # "result": json.dumps(entry_list),
+        "result": entry_list,
+    })
     return HttpResponse(content=json_data, content_type='application/json')
-
 
 def get_slider_json(request):
     entry_list = Entry.objects.all().filter(slider_show=True)

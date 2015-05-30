@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% import "import_jquery.html" as jquery %}
 {% import "import_navbar.html" as navbar %}
 {% import "import_footer.html" as footer %}
 
@@ -11,6 +12,7 @@
 
 {% block script %}
     {{ super() }}
+    {{ jquery.jquery_script() }}
     {{ navbar.navbar_script() }}
     {{ footer.footer_script() }}
 {% endblock %}
