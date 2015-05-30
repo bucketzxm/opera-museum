@@ -4,5 +4,6 @@ venv/
 .idea
 *.tar.gz
 extfile/
+Logging
 Logging_*
 
