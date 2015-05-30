@@ -1,1 +1,89 @@
 Not Found: /favicon.ico
+Not Found: /get_related_entry_json/
+Not Found: /get_related_entry_json/
+Not Found: /get_related_entry_json/
+Internal Server Error: /get_related_entry_json/
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 178, in get_relate_entry_json
+    relate_entry_html_list = [generate_entry_html(related) for related in entry.relate_entry.all()]
+AttributeError: 'QuerySet' object has no attribute 'relate_entry'
+Internal Server Error: /get_related_entry_json/
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 178, in get_relate_entry_json
+    relate_entry_html_list = [generate_entry_html(related) for related in entry.relate_entry.all()]
+AttributeError: 'QuerySet' object has no attribute 'relate_entry'
+Internal Server Error: /get_related_entry_json/
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 178, in get_relate_entry_json
+    relate_entry_html_list = [generate_entry_html(related) for related in entry.related_entry.all()]
+AttributeError: 'QuerySet' object has no attribute 'related_entry'
+Internal Server Error: /get_related_entry_json/
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 178, in get_relate_entry_json
+    relate_entry_html_list = [generate_entry_html(related) for related in entry.relate_entry_set.all()]
+AttributeError: 'QuerySet' object has no attribute 'relate_entry_set'
+Internal Server Error: /get_related_entry_json/
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 178, in get_relate_entry_json
+    relate_entry_html_list = [generate_entry_html(related) for related in entry.relate_entry.all()]
+AttributeError: 'QuerySet' object has no attribute 'relate_entry'
+Internal Server Error: /get_related_entry_json/
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 180, in get_relate_entry_json
+    entry = entry[0]
+TypeError: 'Entry' object does not support indexing
+Not Found: /get_relate_entry_json/
+Not Found: /get_relate_entry_json/
+Not Found: /get_relate_entry_json/
+Internal Server Error: /get_relate_entry_json/
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 185, in get_relate_entry_json
+    relate_entry_html_list = [generate_entry_html(related) for related in entry.relate_entry.all()]
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 158, in generate_entry_html
+    height = img.getImageSize()[1]*1.0 / img.getImageSize()[0] * standard_width
+AttributeError: 'NoneType' object has no attribute 'getImageSize'
+Internal Server Error: /get_relate_entry_json/
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 185, in get_relate_entry_json
+    relate_entry_html_list = [generate_entry_html(related) for related in entry.relate_entry.all()]
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 158, in generate_entry_html
+    height = img.getImageSize()[1]*1.0 / img.getImageSize()[0] * standard_width
+AttributeError: 'NoneType' object has no attribute 'getImageSize'
+Internal Server Error: /get_entry_json/
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 244, in get_entry_json
+    ret_html += generate_entry_html(entry)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 156, in generate_entry_html
+    img = img_func(entry)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 155, in <lambda>
+    img_func = lambda entry: entry.image_set.all().first()
+AttributeError: 'dict' object has no attribute 'image_set'
+Internal Server Error: /get_entry_json/
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 245, in get_entry_json
+    ret_html += generate_entry_html(entry)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 156, in generate_entry_html
+    img = img_func(entry)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 155, in <lambda>
+    img_func = lambda entry: entry.image_set.all().first()
+AttributeError: 'dict' object has no attribute 'image_set'

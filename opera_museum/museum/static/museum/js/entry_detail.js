@@ -98,14 +98,13 @@ $('#waterfall-container_two').waterfall({
     gutterHeight: 15,
     checkImagesLoaded: false,
     maxCol: 4,
-    maxPage:undefined,
-    dataType: "json",
+    maxPage:1,
+    dataType: "html",
     params: {
-        "id": getUrlParams("id"),
-        "page": 1
+        "id": getUrlParams("id")
     },
     path: function (page) {
-        return 'get_entry_json/?page='+page+"&tag_key=root&tag_value=root";
+        return 'get_relate_entry_json/';
     },
     callbacks: {
         renderData: function (data, dataType) {
