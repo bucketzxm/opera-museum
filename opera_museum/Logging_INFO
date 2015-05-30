@@ -1,0 +1,7 @@
+Internal Server Error: /entry_detail
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/views.py", line 103, in entry_detail
+    , 'support': entry.support
+AttributeError: 'Entry' object has no attribute 'support'

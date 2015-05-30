@@ -100,7 +100,7 @@ def entry_detail(request):
                                           , 'video_name': video_name
                                           , 'video_url': video_url
                                           , 'video_description': video_description
-                                          , 'support': entry.support
+                                          , 'support': entry.like
                                           , 'watched': entry.watched })
     return render_to_response("")
 
