@@ -64,7 +64,7 @@ $('#waterfall-container').waterfall({
 				var tpl = $('#waterfall-tpl').html();
 				var template = Handlebars.compile(tpl);
                 var html = template(data);
-                return Waterfall_addSizeRestraintToImage($(html), waterfallColumnWidth);
+                return Waterfall_addSizeConstraintToImage($(html), waterfallColumnWidth);
                 return html;
 			} else { // html format
 				return data;

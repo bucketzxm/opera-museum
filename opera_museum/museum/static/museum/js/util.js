@@ -1,11 +1,11 @@
-function Waterfall_addSizeRestraintToImage($html, restraintWidth) {
+function Waterfall_addSizeConstraintToImage($html, restraintWidth) {
     var retHTML = '';
     $html.each(function (i, node) {
         if (node.nodeName != 'DIV')
             return;
 
         var $node = $(node);
-        var $img = $node.find('img');
+        var $img = $node.find('.museum_waterfall_entry_image');
         $node.css('width', restraintWidth);
         $img.css('max-width', restraintWidth);
         $img.css('height', 'auto');
