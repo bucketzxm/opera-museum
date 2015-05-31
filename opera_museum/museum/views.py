@@ -178,15 +178,18 @@ def get_entry_json(request):
     })
     return HttpResponse(content=json_data, content_type='application/json')
 
+@csrf_exempt
 def get_slider_json(request):
     entry_list = Entry.objects.all().filter(slider_show=True)
+    winHeight = 367
+    winWidth = 595
 
     def generate_div_img(image):
         imageSize = image.getImageSize()
         if imageSize[0] > imageSize[1]:
-            ret = '<div style="text-align: center;"><img src="' + image.image_url.url + '" style="max-width: 513px; height: auto;"/></div>'
+            ret = '<div style="text-align: center;"><img src="{}" style="max-width: {}px; height: auto;"/></div>'.format(image.image_url.url, winWidth)
         else:
-            ret = '<div style="text-align: center;"><img src="' + image.image_url.url + '" style="max-height: 293px; width: auto"/></div>'
+            ret = '<div style="text-align: center;"><img src="{}" style="max-height: {}px; width: auto"/></div>'.format(image.image_url.url, winHeight)
         return ret
 
     items = [ generate_div_img(entry.image_set.all()[0]) for entry in entry_list ]
@@ -194,12 +197,12 @@ def get_slider_json(request):
     res_data = json.dumps(
         {
             "items": items,
-            "winHeight": 293,
-            "winWidth": 513,
-            "picPadding": 21,
+            "winHeight": winHeight,
+            "winWidth": winWidth,
+            "picPadding": 42,
         }
     )
 
     if request.method == "POST":
-        return HttpResponse(res_data)
+        return HttpResponse(content=res_data, content_type='application/json')
     raise RuntimeError("/get_slider_json does not support GET method")

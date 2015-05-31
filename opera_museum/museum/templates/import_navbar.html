@@ -1,16 +1,20 @@
-{% macro navbar_head() %}
+{% import "import_fonts.html" as fonts %}
+{% import "import_bootstrap.html" as bootstrap %}
 
+{% macro navbar_head() %}
+    {{ fonts.fonts_head() }}
+    {{ bootstrap.bootstrap_head() }}
+    <link rel="stylesheet" href="/static/museum/navbar/css/navbar.css">
 {% endmacro %}
 
-
 {% macro navbar_script() %}
-    <script src="/static/museum/js/navbar.js"></script>
+    <script src="/static/museum/navbar/js/navbar.js"></script>
 {% endmacro %}
 
 {% macro navbar_div() %}
     <div class="title">
-        <img class="dtam" src="/static/museum/img/DTAM.png" alt="DTAM"/>
-        <img class="sta_logo" src="/static/museum/img/STA_LOGO.png" alt="STA_LOGO"/>
+        <img class="dtam" src="/static/museum/navbar/img/DTAM_logo.png" alt="DTAM"/>
+        <img class="school_logo" src="/static/museum/navbar/img/school_logo.png" alt="school_logo"/>
 
         <div id="category" class="nav">
             <a id="index" class="" href="/">首页</a>
@@ -22,11 +26,11 @@
         </div>
     </div>
     <div class="search">
-        <form action="#">
+        <form class="search-form" action="#">
             <div class="input-group">
-                <span class="input-group-addon-left"><img height="15" width="15" src="/static/museum/img/search-bar.png"/></span>
-                <input type="text" class="form-control" placeholder="输入关键词" name="search"/>
-                <span class="input-group-addon-right"><img height="15" width="15" src="/static/museum/img/fa-bar.svg"/></span>
+                <span class="input-group-addon"><img src="/static/museum/navbar/img/search.png"/></span>
+                <input class="form-control" type="text" placeholder="输入关键词" name="search"/>
+                <span class="input-group-addon"><img src="/static/museum/navbar/img/category.png"/></span>
             </div>
         </form>
     </div>

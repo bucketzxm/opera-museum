@@ -82,4 +82,3 @@ $.ajax({
         slider = new Slider(options);
     }
 });
-

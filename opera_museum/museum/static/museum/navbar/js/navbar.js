@@ -1,7 +1,4 @@
 $(document).ready(function () {
-    $("#like").click(
-
-    );
     $("#category a").mouseover(function () {
         $(this).addClass("current");
     });
