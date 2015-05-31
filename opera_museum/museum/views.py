@@ -77,6 +77,7 @@ def entry_detail(request):
                 entry = entries.first()
                 if entry.watched <= 1000:
                     entry.watched += 1
+                    entry.save()
 
                 name = entry.name
                 content = link_content(entry)
@@ -110,29 +111,6 @@ def like_entry(request):
             entry.like += 1
             entry.save()
     return HttpResponse(str(entry.like))
-
-def generate_entry_html(entry):
-    _max_content_len = 200  # max length of entry content
-
-    head = '<div class="waterfall-item" entryId=' + str(entry.id) + '>'
-    tail = '</div>'
-    img_func = lambda entry: entry.image_set.all().first()
-    img = img_func(entry)
-    standard_width = 249
-    height = img.getImageSize()[1] * 1.0 / img.getImageSize()[0] * standard_width
-
-    img_html = '<img src="' + img.image_url.url + '" width="249" height="' + str(height) + '">'
-
-    title = '<p>' + entry.name + '</p>'
-    content = '<div style="width: 249px"> <p>' + entry.content[0:_max_content_len] + '</p></div>'
-
-    like_img = '<img id="like" height="20" weight="20" src="/static/museum/img/like.png" />'
-    watch_img = '<img id="watch" height="20" weight="20" src="/static/museum/img/watched.png" />'
-    like_and_watch = '<div>' + like_img + '<p>' + str(entry.like) + '</p>' + watch_img + '<p>' + str(
-        entry.watched) + '</p>' + '</div>'
-    ret_html = head + img_html + title + content + like_and_watch + tail
-
-    return ret_html
 
 def get_entry_json(request):
     '''
@@ -179,12 +157,15 @@ def get_entry_json(request):
 def get_slider_json(request):
     entry_list = Entry.objects.all().filter(slider_show=True)
 
-    items = [
+    def generate_div_img(image):
+        imageSize = image.getImageSize()
+        if imageSize[0] > imageSize[1]:
+            ret = '<div style="text-align: center;"><img src="' + image.image_url.url + '" style="max-width: 513px; height: auto;"/></div>'
+        else:
+            ret = '<div style="text-align: center;"><img src="' + image.image_url.url + '" style="max-height: 293px; width: auto"/></div>'
+        return ret
 
-        '<div><img src="' + entry.image_set.all()[0].image_url.url + '" height = "293" width="513" /></div>'
-
-        for entry in entry_list
-    ]
+    items = [ generate_div_img(entry.image_set.all()[0]) for entry in entry_list ]
 
     res_data = json.dumps(
         {
@@ -198,4 +179,3 @@ def get_slider_json(request):
     if request.method == "POST":
         return HttpResponse(res_data)
     raise RuntimeError("/get_slider_json does not support GET method")
-
