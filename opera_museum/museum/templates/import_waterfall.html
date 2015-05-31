@@ -1,6 +1,7 @@
 {% macro waterfall_head() %}
     <link rel="stylesheet" href="/static/museum/waterfall/css/reset.css">
     <link rel="stylesheet" href="/static/museum/waterfall/css/waterfall.css">
+    <link rel="stylesheet" href="/static/museum/waterfall/css/museum_waterfall.css">
 {% endmacro %}
 
 {% macro waterfall_div(container_id="waterfall-container", render_id="waterfall-tpl", item_class="waterfall-item") %}
@@ -9,12 +10,15 @@
         {% raw %}
         {{#result}}
         {% endraw %}
-            <div class="{{item_class}}" id= "{{ entry_id }}">
+            <div class="{{item_class}}">
                 {% raw %}
-                    <img src="{{image}}"/>
-                    <img onclick="like_entry( {{ entry_id }} )" id="like" src="/static/museum/img/like.png" height="20" width="20"/>{{ like }}
-                    <img id="watched" src="/static/museum/img/watched.png" height="20" width="20"/>{{ watched }}
-
+                    <div id="museum_waterfall_entry_{{entry_id}}">
+                        <img src="{{image}}"/>
+                        <img onclick="like_entry({{entry_id}})" src="/static/museum/img/like.png" height="20" width="20">
+                        <span id="museum_waterfall_entry_like_{{entry_id}}">{{like}}</span>
+                        <img src="/static/museum/img/watched.png" height="20" width="20">
+                        <span id="museum_waterfall_entry_watched_{{entry_id}}">{{watched}}</span>
+                    </div>
                 {% endraw %}
             </div>
         {% raw %}
@@ -26,4 +30,5 @@
 {% macro waterfall_script() %}
     <script src="/static/museum/waterfall/js/libs/handlebars/handlebars.js"></script>
     <script src="/static/museum/waterfall/js/waterfall.min.js"></script>
+    <script src="/static/museum/waterfall/js/museum_waterfall.js"></script>
 {% endmacro %}

@@ -95,12 +95,9 @@ def entry_detail(request):
                                               , 'video_name': video_name
                                               , 'video_url': video_url
                                               , 'video_description': video_description
-                                              , 'support': entry.like
+                                              , 'like': entry.like
                                               , 'watched': entry.watched})
     return render_to_response("")
-
-
-
 
 # support the entry
 @csrf_exempt
@@ -112,10 +109,7 @@ def like_entry(request):
         if entry.like < 1000:
             entry.like += 1
             entry.save()
-    return HttpResponse("success")
-
-
-
+    return HttpResponse(str(entry.like))
 
 def generate_entry_html(entry):
     _max_content_len = 200  # max length of entry content
@@ -140,9 +134,6 @@ def generate_entry_html(entry):
 
     return ret_html
 
-
-
-
 def get_entry_json(request):
     '''
     for Index entry json request
@@ -163,30 +154,23 @@ def get_entry_json(request):
     entries = Entry.objects.all().filter(tags=tag)
 
     # return json format data to waterfall
-    total = len(entries)
-
     entry_list = [
         {
-            # TODO dirty code here
+            "entry_id": entry.id,
             "image": entry.image_set.all().first().image_url.url,  # pay attention to last .url
+            "like": entry.like,
+            "watched": entry.watched
         }
         for entry in entries if entry.image_set.all().first()
     ]
     length = len(entry_list)
     start = (int(page)-1)*10
-    end = start+10
+    end = (start + 10) if (start + 10) <= length else length
 
-    if start > length:
-        return HttpResponse("")
-
-    if end>length:
-        end = length
-
-    entry_list = entry_list[start: end]
-    print(entry_list)
+    entry_list = entry_list[start:end]
+    
     json_data = json.dumps({
-        "total": total,
-        # "result": json.dumps(entry_list),
+        "result_length": end - start,
         "result": entry_list,
     })
     return HttpResponse(content=json_data, content_type='application/json')

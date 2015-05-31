@@ -54,10 +54,18 @@ $('#waterfall-container').waterfall({
     callbacks: {
         renderData: function (data, dataType) {
 			if (dataType === 'json' ||  dataType === 'jsonp') {
+                var result_length = data.result_length;
+                if (result_length <= 0) {
+                    $('#waterfall-container').waterfall('pause', function() {
+                        $('#waterfall-message').html('<p style="color:#666;">没有更多图片啦~</p>');
+                    });
+                }
+                
 				var tpl = $('#waterfall-tpl').html();
 				var template = Handlebars.compile(tpl);
                 var html = template(data);
                 return Waterfall_addSizeRestraintToImage($(html), waterfallColumnWidth);
+                return html;
 			} else { // html format
 				return data;
 			}

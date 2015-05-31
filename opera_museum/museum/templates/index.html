@@ -24,6 +24,10 @@
     {{ slider.slider_div("slider") }}
     <div style="clear: both"></div>
 
-    {{ waterfall.waterfall_div(container_id="waterfall-container", render_id="waterfall-tpl", item_class="waterfall-item") }}
+    <div class="museum-main-container">
+        <div class="museum-container" role="main">
+            {{ waterfall.waterfall_div(container_id="waterfall-container", render_id="waterfall-tpl", item_class="waterfall-item") }}
+        </div>
+    </div>
 
 {% endblock %}
