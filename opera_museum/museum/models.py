@@ -47,6 +47,8 @@ class Entry(models.Model):
     content = models.TextField(blank=True, verbose_name="词条内容")
     # images = models.ManyToManyField(Image, blank=True, verbose_name="图片")
     video_url = models.TextField(blank=True, verbose_name="视屏链接")
+    video_name = models.CharField(max_length=60, default="", verbose_name="视屏名称")
+    video_description = models.CharField(max_length=60, default="", verbose_name="视屏描述")
     # relate_entry = models.TextField(blank=True, verbose_name="相关词条")
     tags = models.ManyToManyField(Tag, blank=True, verbose_name=u"属性分类")
     relate_entry = models.ManyToManyField('self', blank=True, verbose_name="相关词条")
@@ -55,8 +57,6 @@ class Entry(models.Model):
     watched = models.IntegerField(default=0, verbose_name="观看数量")
 
     slider_show = models.BooleanField(default=False, verbose_name="首页跑马灯显示")
-
-
 
 
     def __str__(self):
