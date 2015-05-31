@@ -100,43 +100,6 @@ def entry_detail(request):
     return render_to_response("")
 
 
-@csrf_exempt
-def get_entry_detail_json(request):
-    '''
-    for Entry detail page water fall
-    :param request:
-    :return:
-    '''
-    if request.method == "GET":
-        id = request.GET['id']
-
-        entry = Entry.objects.all().filter(id=id)
-        entry = entry.first()
-
-        if not entry:
-            return HttpResponse("fail")
-        else:
-            ret_json = '''
-
-            <div class="waterfall-item">
-            <div style="width:995">
-                <p>''' + link_content(entry) + '''</p>
-
-            </div>
-            <div class="waterfall-item" >
-                <img src="http://wlog.cn/demo/waterfall/images/001.jpg" width="995" height="288">
-            </div>
-            '''
-            if entry.video_url:
-                ret_json = ret_json + '''
-                <div class="waterfall-item" >
-                    <embed src=''' + entry.video_url + '''
-                     quality="high" width="995" height="400" align="middle" allowScriptAccess="always" allowFullScreen="true" mode="transparent" type="application/x-shockwave-flash"></embed>
-                </div>
-                '''
-            return HttpResponse(content=ret_json, content_type="html")
-
-    return HttpResponse("")
 
 
 # support the entry
@@ -152,18 +115,6 @@ def like_entry(request):
     return HttpResponse("success")
 
 
-# look up entries in the same category
-def entry_category(request):
-    if request.method == 'GET':
-        tag_key = request.GET['tag_key']
-        tag_value = request.GET['tag_value']
-
-        tag = Tag.objects.all().filter(key=tag_key, value=tag_value)
-        # reverse query
-        entries = tag.entry_set.all()
-        print(entries)
-    elif request.method == "POST":
-        pass
 
 
 def generate_entry_html(entry):
@@ -190,28 +141,6 @@ def generate_entry_html(entry):
     return ret_html
 
 
-def get_relate_entry_json(request):
-    if request.method == "GET":
-        id = request.GET['id']
-        entry = Entry.objects.all().filter(id=id)
-
-        try:
-            entry = entry[0]
-        except IndexError as e:
-            logger.error(e)
-            return HttpResponse('/')
-
-        relate_entry_html_list = [generate_entry_html(related) for related in entry.relate_entry.all()]
-        ret_data = "".join(relate_entry_html_list)
-
-        return HttpResponse(content=ret_data, content_type="html")
-
-    try:
-        raise RuntimeError("/get_slider_json does not support GET method")
-    except:
-        logger.error("get_slider_json does not support GET method")
-    finally:
-        return HttpResponse("/")
 
 
 def get_entry_json(request):
@@ -286,113 +215,3 @@ def get_slider_json(request):
         return HttpResponse(res_data)
     raise RuntimeError("/get_slider_json does not support GET method")
 
-
-def indexData(request, page):
-    jsondata = """
-{
-    "total": 20,
-    "result": [
-        {
-            "image": "http://wlog.cn/demo/waterfall/images/001.jpg",
-            "width": 192,
-            "height": 288
-        },
-        {
-            "image": "http://wlog.cn/demo/waterfall/images/002.jpg",
-            "width": 192,
-            "height": 257
-        },
-        {
-            "image": "http://wlog.cn/demo/waterfall/images/003.jpg",
-            "width": 192,
-            "height": 288
-        },
-        {
-            "image": "http://wlog.cn/demo/waterfall/images/004.jpg",
-            "width": 192,
-            "height": 288
-        },
-        {
-            "image": "http://wlog.cn/demo/waterfall/images/005.jpg",
-            "width": 192,
-            "height": 248
-        },
-        {
-            "image": "http://wlog.cn/demo/waterfall/images/006.jpg",
-            "width": 192,
-            "height": 288
-        },
-        {
-            "image": "http://wlog.cn/demo/waterfall/images/007.jpg",
-            "width": 192,
-            "height": 288
-        },
-        {
-            "image": "http://wlog.cn/demo/waterfall/images/008.jpg",
-            "width": 192,
-            "height": 290
-        },
-        {
-            "image": "http://wlog.cn/demo/waterfall/images/009.jpg",
-            "width": 192,
-            "height": 240
-        },
-        {
-            "image": "http://wlog.cn/demo/waterfall/images/010.jpg",
-            "width": 192,
-            "height": 228
-        },
-        {
-            "image": "http://wlog.cn/demo/waterfall/images/011.jpg",
-            "width": 192,
-            "height": 128
-        },
-        {
-            "image": "http://wlog.cn/demo/waterfall/images/012.jpg",
-            "width": 192,
-            "height": 128
-        },
-        {
-            "image": "http://wlog.cn/demo/waterfall/images/013.jpg",
-            "width": 192,
-            "height": 128
-        },
-        {
-            "image": "http://wlog.cn/demo/waterfall/images/014.jpg",
-            "width": 192,
-            "height": 128
-        },
-        {
-            "image": "http://wlog.cn/demo/waterfall/images/015.jpg",
-            "width": 192,
-            "height": 256
-        },
-        {
-            "image": "http://wlog.cn/demo/waterfall/images/016.jpg",
-            "width": 192,
-            "height": 256
-        },
-        {
-            "image": "http://wlog.cn/demo/waterfall/images/017.jpg",
-            "width": 192,
-            "height": 287
-        },
-        {
-            "image": "http://wlog.cn/demo/waterfall/images/018.jpg",
-            "width": 192,
-            "height": 288
-        },
-        {
-            "image": "http://wlog.cn/demo/waterfall/images/019.jpg",
-            "width": 192,
-            "height": 192
-        },
-        {
-            "image": "http://wlog.cn/demo/waterfall/images/020.jpg",
-            "width": 192,
-            "height": 288
-        }
-    ]
-}
-"""
-    return HttpResponse(content=jsondata, content_type='application/json')

@@ -94,3 +94,54 @@ Traceback (most recent call last):
   File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 985, in get_prep_value
     return int(value)
 ValueError: invalid literal for int() with base 10: 'undefined'
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 119, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/urlresolvers.py", line 366, in resolve
+    for pattern in self.url_patterns:
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/urlresolvers.py", line 402, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/urlresolvers.py", line 396, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/Users/simon/Work/opera-museum/opera_museum/opera_museum/urls.py", line 4, in <module>
+    import museum.urls
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/urls.py", line 9, in <module>
+    url(r'^rest/v1/index/indexImages/(?P<page>[0-9]+)$', views.indexData),
+AttributeError: 'module' object has no attribute 'indexData'
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 119, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/urlresolvers.py", line 366, in resolve
+    for pattern in self.url_patterns:
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/urlresolvers.py", line 402, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/urlresolvers.py", line 396, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/Users/simon/Work/opera-museum/opera_museum/opera_museum/urls.py", line 4, in <module>
+    import museum.urls
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/urls.py", line 13, in <module>
+    url(r'^get_entry_detail_json', views.get_entry_detail_json),
+AttributeError: 'module' object has no attribute 'get_entry_detail_json'
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 119, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/urlresolvers.py", line 366, in resolve
+    for pattern in self.url_patterns:
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/urlresolvers.py", line 402, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/Users/simon/Work/opera-museum/venv/lib/python2.7/site-packages/django/core/urlresolvers.py", line 396, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/Users/simon/Work/opera-museum/opera_museum/opera_museum/urls.py", line 4, in <module>
+    import museum.urls
+  File "/Users/simon/Work/opera-museum/opera_museum/museum/urls.py", line 14, in <module>
+    url(r'^get_relate_entry_json', views.get_relate_entry_json),
+AttributeError: 'module' object has no attribute 'get_relate_entry_json'
