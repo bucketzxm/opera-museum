@@ -77,6 +77,7 @@ def entry_detail(request):
                 entry = entries.first()
                 if entry.watched <= 1000:
                     entry.watched += 1
+                    entry.save()
 
                 name = entry.name
                 content = link_content(entry)
@@ -99,6 +100,10 @@ def entry_detail(request):
                                               , 'watched': entry.watched})
     return render_to_response("")
 
+
+
+
+
 # support the entry
 @csrf_exempt
 def like_entry(request):
@@ -111,28 +116,31 @@ def like_entry(request):
             entry.save()
     return HttpResponse(str(entry.like))
 
-def generate_entry_html(entry):
-    _max_content_len = 200  # max length of entry content
 
-    head = '<div class="waterfall-item" entryId=' + str(entry.id) + '>'
-    tail = '</div>'
-    img_func = lambda entry: entry.image_set.all().first()
-    img = img_func(entry)
-    standard_width = 249
-    height = img.getImageSize()[1] * 1.0 / img.getImageSize()[0] * standard_width
+def get_relate_entry_json(request):
+    if request.method == 'GET':
+        entry_id = request.GET['id']
+        entry_now = Entry.objects.all().filter(id=entry_id)[0]
+        relate_entry = entry_now.relate_entry.all()
 
-    img_html = '<img src="' + img.image_url.url + '" width="249" height="' + str(height) + '">'
+        entry_list = [
+            {
+                "entry_id": entry.id,
+                "image": entry.image_set.all().first().image_url.url,
+                "like": entry.like,
+                "watched": entry.watched
+            }
+            for entry in relate_entry if entry.image_set.all().first()
 
-    title = '<p>' + entry.name + '</p>'
-    content = '<div style="width: 249px"> <p>' + entry.content[0:_max_content_len] + '</p></div>'
+        ]
+        json_data = json.dumps({
+            "result_length": len(entry_list),
+            "result": entry_list,
+        })
+        return HttpResponse(content=json_data, content_type='application/json')
 
-    like_img = '<img id="like" height="20" weight="20" src="/static/museum/img/like.png" />'
-    watch_img = '<img id="watch" height="20" weight="20" src="/static/museum/img/watched.png" />'
-    like_and_watch = '<div>' + like_img + '<p>' + str(entry.like) + '</p>' + watch_img + '<p>' + str(
-        entry.watched) + '</p>' + '</div>'
-    ret_html = head + img_html + title + content + like_and_watch + tail
+    return HttpResponse("fail")
 
-    return ret_html
 
 def get_entry_json(request):
     '''

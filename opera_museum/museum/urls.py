@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^get_slider_json',views.get_slider_json),
     url(r'^entry_detail', views.entry_detail),
     # url(r'^get_entry_detail_json', views.get_entry_detail_json),
-    # url(r'^get_relate_entry_json', views.get_relate_entry_json),
+    url(r'^get_relate_entry_json', views.get_relate_entry_json),
     url(r'^like_entry', views.like_entry),
 
 ]
