@@ -49,7 +49,6 @@ $('#waterfall-container').waterfall({
     dataType: 'json',
     path: function (page) {
         return 'get_entry_json/?page=' + page + "&tag_key=root&tag_value=root";
-        //return 'rest/v1/index/indexImages/'+ page ;
     },
     callbacks: {
         renderData: function (data, dataType) {
@@ -65,7 +64,6 @@ $('#waterfall-container').waterfall({
 				var template = Handlebars.compile(tpl);
                 var html = template(data);
                 return Waterfall_addSizeConstraintToImage($(html), waterfallColumnWidth);
-                return html;
 			} else { // html format
 				return data;
 			}
