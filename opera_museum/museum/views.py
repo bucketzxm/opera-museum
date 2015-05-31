@@ -117,6 +117,7 @@ def like_entry(request):
     return HttpResponse(str(entry.like))
 
 
+
 def get_relate_entry_json(request):
     if request.method == 'GET':
         entry_id = request.GET['id']
@@ -140,6 +141,7 @@ def get_relate_entry_json(request):
         return HttpResponse(content=json_data, content_type='application/json')
 
     return HttpResponse("fail")
+
 
 
 def get_entry_json(request):
@@ -187,12 +189,15 @@ def get_entry_json(request):
 def get_slider_json(request):
     entry_list = Entry.objects.all().filter(slider_show=True)
 
-    items = [
+    def generate_div_img(image):
+        imageSize = image.getImageSize()
+        if imageSize[0] > imageSize[1]:
+            ret = '<div style="text-align: center;"><img src="' + image.image_url.url + '" style="max-width: 513px; height: auto;"/></div>'
+        else:
+            ret = '<div style="text-align: center;"><img src="' + image.image_url.url + '" style="max-height: 293px; width: auto"/></div>'
+        return ret
 
-        '<div><img src="' + entry.image_set.all()[0].image_url.url + '" height = "293" width="513" /></div>'
-
-        for entry in entry_list
-    ]
+    items = [ generate_div_img(entry.image_set.all()[0]) for entry in entry_list ]
 
     res_data = json.dumps(
         {
@@ -206,4 +211,3 @@ def get_slider_json(request):
     if request.method == "POST":
         return HttpResponse(res_data)
     raise RuntimeError("/get_slider_json does not support GET method")
-
