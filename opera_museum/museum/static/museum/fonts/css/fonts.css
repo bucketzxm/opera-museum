@@ -7,3 +7,8 @@
     font-family: "STHeiTi";
     src: url('/static/museum/fonts/华文黑体.ttf');
 }
+
+@font-face {
+    font-family: "HelveticaNeueBold";
+    src: url('/static/museum/fonts/HelveticaNeue/HelveticaNeueLTPro-Bd_0.otf');
+}

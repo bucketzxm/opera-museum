@@ -11,30 +11,32 @@
     <div id="{{container_id}}"></div>
     <script type="text/x-handlebars-template" id="{{render_id}}">
         {% raw %}
-        {{#result}}
+            {{#result}}
         {% endraw %}
-            <div class="{{item_class}}">
-                {% raw %}
-                    <div id="museum_waterfall_entry_{{entry_id}}" class="museum_waterfall_item">
-                        <img src="{{image}}"/>
-                        <div class="museum_waterfall_entry_block">
-                            <div class="museum-waterfall-entry-name">{{name}}</div>
-                            <hr/>
-                            <div class="museum-waterfall-entry-content">{{content}}</div>
-                            <hr/>
+        <div class="{{item_class}}">
+            {% raw %}
+                <div id="museum_waterfall_entry_{{entry_id}}" class="museum_waterfall_item">
+                    <img class="mouse-cursor-pointer" src="{{image}}" onclick="location.href='/entry_detail/?id={{entry_id}}'"/>
+                    <div class="museum_waterfall_entry_block">
+                        <div class="museum-waterfall-entry-name">
+                            <span class="mouse-cursor-pointer" onclick="location.href='/entry_detail/?id={{entry_id}}'">{{name}}</span>
                         </div>
-                            <div class="museum-waterfall-entry-icons">
-                                <img onclick="like_entry({{entry_id}})" src="/static/museum/img/like.png" height="20" width="20">
-                                <span id="museum_waterfall_entry_like_{{entry_id}}">{{like}}</span>
-                                <img src="/static/museum/img/watched.png" height="20" width="20">
-                                <span id="museum_waterfall_entry_watched_{{entry_id}}">{{watched}}</span>
-                            </div>
-
+                        <hr/>
+                        <div class="museum-waterfall-entry-content">{{content}}</div>
+                        <hr/>
                     </div>
-                {% endraw %}
-            </div>
+                        <div class="museum-waterfall-entry-icons">
+                            <img class="mouse-cursor-pointer museum-waterfall-icon-center" onclick="like_entry({{entry_id}})" src="/static/museum/img/like.png" height="20" width="20"/>
+                            {{like}}
+                            <img class="museum-waterfall-icon-center" src="/static/museum/img/watched.png" height="20" width="20"/>
+                            {{watched}}
+                        </div>
+
+                </div>
+            {% endraw %}
+        </div>
         {% raw %}
-        {{/result}}
+            {{/result}}
         {% endraw %}
     </script>
 {% endmacro %}
