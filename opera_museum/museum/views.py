@@ -24,10 +24,8 @@ import logging
 # set a logger
 logger = logging.getLogger(__name__)
 
-
 def index(request):
     return render_to_response("index.html")
-
 
 def link_content(entry):
     content = entry.content
@@ -53,7 +51,6 @@ def link_content(entry):
                 pos = -1
     print(content)
     return "'" + content + "'"
-
 
 # look up detail for appointed entry
 def entry_detail(request):
@@ -100,10 +97,6 @@ def entry_detail(request):
                                               , 'watched': entry.watched})
     return render_to_response("")
 
-
-
-
-
 # support the entry
 @csrf_exempt
 def like_entry(request):
@@ -115,8 +108,6 @@ def like_entry(request):
             entry.like += 1
             entry.save()
     return HttpResponse(str(entry.like))
-
-
 
 def get_relate_entry_json(request):
     if request.method == 'GET':
@@ -132,7 +123,6 @@ def get_relate_entry_json(request):
                 "watched": entry.watched
             }
             for entry in relate_entry if entry.image_set.all().first()
-
         ]
         json_data = json.dumps({
             "result_length": len(entry_list),
@@ -142,14 +132,15 @@ def get_relate_entry_json(request):
 
     return HttpResponse("fail")
 
-
-
 def get_entry_json(request):
     '''
     for Index entry json request
     :param request:
     :return:
     '''
+    # Constants
+    const_waterfallContentMaxLength = 128
+    
     tag_key = tag_value = page = None
     if request.method == "GET":
         tag_key = request.GET['tag_key']
@@ -168,6 +159,8 @@ def get_entry_json(request):
         {
             "entry_id": entry.id,
             "image": entry.image_set.all().first().image_url.url,  # pay attention to last .url
+            "name": entry.name,
+            "content": entry.content[0:const_waterfallContentMaxLength],
             "like": entry.like,
             "watched": entry.watched
         }
@@ -184,7 +177,6 @@ def get_entry_json(request):
         "result": entry_list,
     })
     return HttpResponse(content=json_data, content_type='application/json')
-
 
 def get_slider_json(request):
     entry_list = Entry.objects.all().filter(slider_show=True)

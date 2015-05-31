@@ -1,3 +1,39 @@
 .museum_waterfall_item {
     border-radius: 5px;
 }
+
+.museum_waterfall_item > img {
+    border-radius: 8px 8px 0px 0px;
+}
+
+.museum_waterfall_entry_block {
+    background-color: #fff;
+}
+
+.museum_waterfall_entry_block > hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #f1f1f1;
+    margin: auto 0px;
+    padding: 0;
+}
+
+.museum-waterfall-entry-name {
+    color: rgb(80, 181, 255);
+    font-size: 114%;
+    font-family: "STHeiTi";
+    padding: 3.35% 6.13% 3.35% 6.13%;
+}
+
+.museum-waterfall-entry-content {
+    font-size: 114%;
+    font-family: "STXiHei";
+    padding: 3.35% 6.13% 3.35% 6.13%;
+}
+
+.museum-waterfall-entry-icons {
+    background-color: #f7f7f7;
+    padding: 3.35% 6.13% 3.35% 6.13%;
+    border-radius: 0px 0px 8px 8px;
+}
