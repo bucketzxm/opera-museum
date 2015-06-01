@@ -37,14 +37,14 @@ $.ajaxSetup({
     }
 });
 
-var waterfallColumnWidth = 249;
+var waterfallColumnWidth = 238;
 $('#waterfall-container').waterfall({
     itemCls: 'waterfall-item',
     colWidth: waterfallColumnWidth,
     gutterWidth: 15,
     gutterHeight: 15,
     checkImagesLoaded: false,
-    maxCol: 4,
+    minCol: 4,
     page: 1,
     dataType: 'json',
     path: function (page) {

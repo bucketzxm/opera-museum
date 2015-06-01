@@ -20,11 +20,10 @@
 }
 
 .museum-container {
-    width: 38.9%;
+    width: 986px;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-    /* for footer */
     padding-bottom: 50px;
 }

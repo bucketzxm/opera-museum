@@ -1,13 +1,11 @@
 {% extends "baseNavbarFooter.html" %}
 
 {% import "import_jquery.html" as jquery %}
-{% import "import_bootstrap.html" as bootstrap %}
 {% import "import_waterfall.html" as waterfall %}
 {% import "import_fonts.html" as fonts %}
 
 {% block head %}
     {{ super() }}
-    {{ bootstrap.bootstrap_head() }}
     <!-- {{ waterfall.waterfall_head() }} -->
     {{ fonts.fonts_head() }}
     <link rel="stylesheet" href="/static/museum/css/entry_detail.css">
@@ -16,7 +14,6 @@
 {% block script %}
     {{ super() }}
     {{ jquery.jquery_script() }}
-    {{ bootstrap.bootstrap_script() }}
     <!-- {{ waterfall.waterfall_script() }} -->
     <script src="/static/museum/js/entry_detail.js"></script>
 {% endblock %}

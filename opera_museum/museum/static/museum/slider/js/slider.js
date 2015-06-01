@@ -65,11 +65,11 @@ var Slider = (function($) {
         var $nav = $('<span></span>');
         $nav.css("left", "30px");
         $nav.css("float", "left");
-        $nav.css("background", "url(/static/museum/slider/img/nav_previous.png)");
-        $nav.css("width", 30);
-        $nav.css("height", 95);
+        $nav.css("background", "url('/static/museum/slider/img/sliderleft.png')");
+        $nav.css("width", 40);
+        $nav.css("height", 126);
         $nav.css("position", "absolute");
-        $nav.css("top", "30%");
+        $nav.css("top", "43%");
         return $nav;
     };
     
@@ -77,11 +77,11 @@ var Slider = (function($) {
         var $nav = $('<span></span>');
         $nav.css("right", "30px");
         $nav.css("float", "right");
-        $nav.css("background", "url(/static/museum/slider/img/nav_next.png)");
-        $nav.css("width", 30);
-        $nav.css("height", 95);
+        $nav.css("background", "url('/static/museum/slider/img/sliderright.png')");
+        $nav.css("width", 40);
+        $nav.css("height", 126);
         $nav.css("position", "absolute");
-        $nav.css("top", "30%");
+        $nav.css("top", "43%");
         return $nav;
     };
     

@@ -49,7 +49,6 @@ def link_content(entry):
             except ValueError, e:
                 logger.error(e)
                 pos = -1
-    print(content)
     return "'" + content + "'"
 
 # look up detail for appointed entry
@@ -139,7 +138,7 @@ def get_entry_json(request):
     :return:
     '''
     # Constants
-    const_waterfallContentMaxLength = 128
+    const_waterfallContentMaxLength = 70
     
     tag_key = tag_value = page = None
     if request.method == "GET":
@@ -180,16 +179,18 @@ def get_entry_json(request):
 
 @csrf_exempt
 def get_slider_json(request):
+    # constants
+    const_winHeight = 367
+    const_winWidth = 595
+    
     entry_list = Entry.objects.all().filter(slider_show=True)
-    winHeight = 367
-    winWidth = 595
 
     def generate_div_img(image):
         imageSize = image.getImageSize()
         if imageSize[0] > imageSize[1]:
-            ret = '<div style="text-align: center;"><img src="{}" style="max-width: {}px; height: auto;"/></div>'.format(image.image_url.url, winWidth)
+            ret = '<div style="text-align: center;"><img src="{}" style="max-width: {}px; height: auto;"/></div>'.format(image.image_url.url, const_winWidth)
         else:
-            ret = '<div style="text-align: center;"><img src="{}" style="max-height: {}px; width: auto"/></div>'.format(image.image_url.url, winHeight)
+            ret = '<div style="text-align: center;"><img src="{}" style="max-height: {}px; width: auto;"/></div>'.format(image.image_url.url, const_winHeight)
         return ret
 
     items = [ generate_div_img(entry.image_set.all()[0]) for entry in entry_list ]
@@ -197,12 +198,12 @@ def get_slider_json(request):
     res_data = json.dumps(
         {
             "items": items,
-            "winHeight": winHeight,
-            "winWidth": winWidth,
+            "winHeight": const_winHeight,
+            "winWidth": const_winWidth,
             "picPadding": 42,
         }
     )
 
     if request.method == "POST":
-        return HttpResponse(content=res_data, content_type='application/json')
+        return HttpResponse(res_data)
     raise RuntimeError("/get_slider_json does not support GET method")
