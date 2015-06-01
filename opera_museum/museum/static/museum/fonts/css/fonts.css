@@ -1,11 +1,11 @@
 @font-face {
     font-family: "STXiHei";
-    src: url('/static/museum/fonts/华文细黑.ttf');
+    src: url('/static/museum/fonts/STXiHei.ttf');
 }
 
 @font-face {
     font-family: "STHeiTi";
-    src: url('/static/museum/fonts/华文黑体.ttf');
+    src: url('/static/museum/fonts/STHeiTi.ttf');
 }
 
 @font-face {
