@@ -30,6 +30,7 @@
 }
 
 .current {
+    margin-top: 3px;
 	background: url("../img/highlight.png") repeat-x bottom;
 }
 
