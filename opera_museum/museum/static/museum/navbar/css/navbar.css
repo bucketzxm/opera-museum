@@ -25,22 +25,58 @@
     float: left;
 	margin-top: -23px;
     margin-left: 366px;
+    padding-bottom: 3px;
 }
 
 .nav a {
-	display: inline-block;
-	margin: 0px 3px 0px 21px;
-    padding-bottom: 3px;
 	color: #666;
     font-size: 18px;
     font-family: 'STXiHei';
 	text-decoration: none;
 }
 
+.navbar_word {
+    display: inline-block;
+    margin: 0px 3px 0px 21px;
+}
+
+.navbar_underline {
+    float: left;
+    height: 3px;
+    margin: -1px 3px 0px 25px;
+    display: inline-block;
+    background-color: #3eb9ff;
+}
+
+#index_underline {
+    width: 36px;
+    margin-left: 21px;
+}
+
+#aboutus_underline {
+    width: 72px;
+}
+
+#news_underline {
+    width: 72px;
+}
+
+#research_underline {
+    width: 72px;
+}
+
+#mag_underline {
+    width: 72px;
+}
+
+#dtam_underline {
+    width: 143px;
+}
+
 .current {
 	background-image: url(../img/highlight.png);
     background-repeat: repeat-x;
-    background-position: 50% 24px;
+    background-position: 50% 99%;
 }
 
 .search {
