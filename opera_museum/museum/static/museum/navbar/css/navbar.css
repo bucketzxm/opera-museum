@@ -30,6 +30,7 @@
 .nav a {
 	display: inline-block;
 	margin: 0px 3px 0px 21px;
+    padding-bottom: 3px;
 	color: #666;
     font-size: 18px;
     font-family: 'STXiHei';
@@ -37,7 +38,8 @@
 }
 
 .current {
-	background: url("../img/highlight.png") repeat-x bottom;
+	background: url("../img/highlight.png") repeat-x;
+    background-position: 50% 23px;
 }
 
 .search {
