@@ -23,8 +23,9 @@
 }
 
 .nav {
-    float: right;
-	margin-top: 26px;
+    float: left;
+	margin-top: -25px;
+    margin-left: 360px;
 }
 
 .nav a {
