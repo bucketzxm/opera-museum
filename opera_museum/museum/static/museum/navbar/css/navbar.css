@@ -38,8 +38,9 @@
 }
 
 .current {
-	background: url("../img/highlight.png") repeat-x;
-    background-position: 50% 23px;
+	background-image: url(../img/highlight-bak.png);
+    background-repeat: repeat-x;
+    background-position: 50% 22px;
 }
 
 .search {
