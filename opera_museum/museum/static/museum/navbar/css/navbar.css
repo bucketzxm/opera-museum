@@ -1,18 +1,25 @@
+.Navigator {
+    padding: 17px 0px 9px 0px;
+    z-index: 670;
+    background: url("../img/shadow.png") repeat-x bottom;
+}
+
 .title {
-	margin: 7px auto 26px auto;
-	width: 1005px;
-	height: 92px;
+    margin: 0px auto;
+    margin-bottom: 26px;
+	width: 998px;
+	height: 94px;
 }
 
 .dtam {
 	float: left;
-    margin-left: 5px;
-    margin-right: 38px;
+    margin-left: 22px;
+    margin-right: 32px;
 }
 
 .school_logo {
     float: right;
-	margin-right: 14px;
+	<!-- margin-right: 14px; -->
 }
 
 .nav {
@@ -22,7 +29,7 @@
 
 .nav a {
 	display: inline-block;
-	margin: 0px 10px 0px 10px;
+	margin: 0px 3px 0px 21px;
 	color: #666;
     font-size: 18px;
     font-family: 'STHeiTi';
@@ -36,7 +43,6 @@
 
 .search {
 	margin: 0px auto;
-	margin-bottom: 9px;
 	width: 1005px;
     height: 34px;
 }
@@ -46,10 +52,18 @@
     height: 100%;
 }
 
+.input-group {
+    width: 100%;
+}
+
 .input-group-addon {
     background-color: #fff;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .form-control {
     background-color: #e9e9e9;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }

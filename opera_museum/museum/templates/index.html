@@ -21,10 +21,10 @@
 {% block content %}
     {{ super() }}
 
-    {{ slider.slider_div("slider") }}
-    <div style="clear: both"></div>
-
     <div class="museum-main-container">
+        {{ slider.slider_div("slider") }}
+        <div style="clear: both"></div>
+        
         <div class="museum-container" role="main">
             {{ waterfall.waterfall_div(container_id="waterfall-container", render_id="waterfall-tpl", item_class="waterfall-item") }}
         </div>

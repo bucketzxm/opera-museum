@@ -13,26 +13,27 @@
 {% endmacro %}
 
 {% macro navbar_div() %}
-    <div class="title">
-        <img class="dtam" src="/static/museum/navbar/img/DTAM_logo.png" alt="DTAM"/>
-        <img class="school_logo" src="/static/museum/navbar/img/school_logo.png" alt="school_logo"/>
+    <div class="Navigator">
+        <div class="title">
+            <img class="dtam" src="/static/museum/navbar/img/DTAM_logo.png" alt="DTAM"/>
+            <img class="school_logo" src="/static/museum/navbar/img/school_logo.png" alt="school_logo"/>
 
-        <div id="category" class="nav">
-            <a id="index" href="/">首页</a>
-            <a id="aboutus" href="#">关于我们</a>
-            <a id="news" href="#">新闻栏目</a>
-            <a id="research" href="#">研究栏目</a>
-            <a id="mag" href="#">杂志期刊</a>
-            <a id="dtam" href="#">多维度戏剧博物馆</a>
-        </div>
-    </div>
-    <div class="search">
-        <form class="search-form" action="#">
-            <div class="input-group">
-                <span class="input-group-addon"><img src="/static/museum/navbar/img/search.png"/></span>
-                <input class="form-control" type="text" placeholder="输入关键词" name="search"/>
-                <span class="input-group-addon"><img src="/static/museum/navbar/img/category.png"/></span>
+            <div id="category" class="nav">
+                <a id="index" href="/">首页</a>
+                <a id="aboutus" href="#">关于我们</a>
+                <a id="news" href="#">新闻栏目</a>
+                <a id="research" href="#">研究栏目</a>
+                <a id="mag" href="#">杂志期刊</a>
+                <a id="dtam" href="#">多维度戏剧博物馆</a>
             </div>
-        </form>
+        </div>
+        <div class="search">
+            <form class="search-form" action="#">
+                <div class="input-group">
+                    <span class="input-group-addon"><img src="/static/museum/navbar/img/search.png"/></span>
+                    <input class="form-control" type="text" placeholder="输入关键词" name="search"/>
+                </div>
+            </form>
+        </div>
     </div>
 {% endmacro %}
