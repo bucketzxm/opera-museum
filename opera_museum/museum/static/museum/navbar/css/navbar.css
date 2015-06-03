@@ -1,5 +1,5 @@
 .Navigator {
-    padding: 17px 0px 9px 0px;
+    padding: 17px 0px 16px 0px;
     z-index: 670;
     background: url("../img/shadow.png") repeat-x bottom;
 }
@@ -19,7 +19,6 @@
 
 .school_logo {
     float: right;
-	<!-- margin-right: 14px; -->
 }
 
 .nav {
@@ -38,7 +37,6 @@
 }
 
 .current {
-    margin-top: 3px;
 	background: url("../img/highlight.png") repeat-x bottom;
 }
 
